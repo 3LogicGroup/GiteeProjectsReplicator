@@ -8,11 +8,10 @@
 from/to Chinese gitee.com to/from Russian gitee.ru or another git-repository as GitHub, GitLab etc.
 Also, mirrored project contains most important project artifacts: description, issues, milestones, releases and documentation.
 
-Replication and synchronization worked throw HTTP API.v5 of Gitee service:
-- https://gitee.ru/api/v5/swagger
-- https://gitee.com/api/v5/swagger
+Replication and synchronization worked throw HTTP API.v5 of Gitee service.
 
 Also, GPReplicator can be used as CLI-manager to work with Gitee projects in the console.
+For all examples you will need to use the Gitee OAuth token.
 
 Examples:
 
@@ -20,6 +19,12 @@ Examples:
 - 2
 - 3
 
+More CLI examples see in documentation:
+- 🇷🇺 [In Russian](https://3logicgroup.github.io/GiteeProjectsReplicator/)
+- 🇺🇸 [In English](https://github.com/3LogicGroup/GiteeProjectsReplicator/blob/master/README_EN.md)
+
+See also:
+- ⚙ [Documentation on GPReplicator class methods (for Python developers)]()
 """
 
 
@@ -60,21 +65,29 @@ uLogger.handlers[1].level = 10  # debug level by default for log.txt
 
 class GiteeTransport:
     """
-    This class implements model and simple methods to work with Gitee HTTP API service.
+    This class implements methods to work with Gitee HTTP API service.
+
+    - Russian Gitee service: https://gitee.ru
+      - Russian service API gateway: https://gitee.ru/api/v5
+      - Russian service swagger documentation: https://gitee.ru/api/v5/swagger
+    - Chinese Gitee service: https://gitee.com
+      - Chinese service API gateway: https://gitee.com/api/v5
+      - Chinese service swagger documentation: https://gitee.com/api/v5/swagger
+
+    Examples to work with API:
+    - https://gitee.ru/api/v5/swagger
+    - https://gitee.com/api/v5/swagger
+
+    About `gToken` for Gitee OAuth:
+    - https://gitee.ru/api/v5/oauth_doc
+    - https://gitee.com/api/v5/oauth_doc
     """
 
     def __init__(self):
         """Main class init."""
 
         self.gAPIGateway = "https://gitee.ru/api/v5/"
-        """
-        API gateway of Gitee service. Default: `https://gitee.ru/api/v5/`
-
-        - Russian gitee service: https://gitee.ru/api/v5/
-          - Russian service swagger documentation: https://gitee.ru/api/v5/swagger
-        - Chinese: https://gitee.com/api/v5/
-          - Chinese service swagger documentation: https://gitee.com/api/v5/swagger
-        """
+        """API gateway of Gitee service. Default: `https://gitee.ru/api/v5/`"""
 
         self.gToken = None
         """Your API token at Gitee service. Default: `None`"""
@@ -174,8 +187,8 @@ def Main():
     Main function for work with GPReplicator in the console.
 
     See examples:
-    - in english: https://github.com/Tim55667757/GPMirroring/blob/master/README_EN.md
-    - in russian: https://github.com/Tim55667757/GPMirroring/blob/master/README.md
+    - 🇷🇺 [In Russian](https://3logicgroup.github.io/GiteeProjectsReplicator/)
+    - 🇺🇸 [In English](https://github.com/3LogicGroup/GiteeProjectsReplicator/blob/master/README_EN.md)
     """
     args = ParseArgs()  # get and parse command-line parameters
     exitCode = 0
