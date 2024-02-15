@@ -48,11 +48,18 @@ import sys
 from typing import Optional, Union
 from datetime import datetime, timedelta
 
+import json
+import requests
+
 from dateutil.tz import tzlocal
+from time import sleep
 from argparse import ArgumentParser
 
 import gpreplicator.UniLogger as uLog
 import traceback as tb
+
+from multiprocessing import cpu_count, Lock
+from multiprocessing.pool import ThreadPool
 
 
 # --- Common technical parameters:
@@ -61,6 +68,9 @@ uLogger = uLog.UniLogger
 uLogger.level = 10  # debug level by default
 uLogger.handlers[0].level = 10  # info level by default for STDOUT
 uLogger.handlers[1].level = 10  # debug level by default for log.txt
+
+CPU_COUNT = cpu_count()  # host's real CPU count
+CPU_USAGES = CPU_COUNT - 1 if CPU_COUNT > 1 else 1  # how many CPUs will be used for parallel calculations
 
 
 class GiteeTransport:
@@ -86,8 +96,37 @@ class GiteeTransport:
     def __init__(self):
         """Main class init."""
 
+        self.__lock = Lock()  # initialize multiprocessing mutex lock
+
         self.gAPIGateway = "https://gitee.ru/api/v5"
         """API gateway of Gitee service. Default: `https://gitee.ru/api/v5`"""
+
+        self.timeout = 15
+        """Server operations timeout in seconds. Default: `15`."""
+
+        self.retry = 3
+        """
+        How many times retry after first request if a 5xx server errors occurred. If set to 0, then only first main
+        request will be sent without retries. This allows you to reduce the number of calls to the server API for all methods.
+
+        3 times of retries by default.
+        """
+
+        self.pause = 5
+        """Sleep time in seconds between retries, in all network requests 5 seconds by default."""
+
+        self.headers = {
+            "Content-Type": "application/json",
+            "accept": "application/json",
+            "x-app-name": "GPReplicator",
+        }
+        """
+        Headers which send in every request to broker server.
+        Default: `{"Content-Type": "application/json", "accept": "application/json", "x-app-name": "GPReplicator"}`.
+        """
+
+        self.body = None
+        """Request body which send to broker server. Default: `None`."""
 
         self.gToken = None
         """Your API token at Gitee service. Default: `None`"""
@@ -97,6 +136,112 @@ class GiteeTransport:
 
         self.gProject = None
         """Project on Gitee service for mirroring. Default: `None`"""
+
+        self.moreDebug = False
+        """Enables more debug information in this class, such as net request and response headers in all methods. `False` by default."""
+
+    def _ParseJSON(self, rawData="{}") -> dict:
+        """
+        Support function: parse JSON from response string.
+
+        :param rawData: this is a string with JSON-formatted text.
+        :return: JSON (dictionary), parsed from server response string. If an error occurred, then return empty dict `{}`.
+        """
+        try:
+            responseJSON = json.loads(rawData) if rawData else {}
+
+            uLogger.debug("JSON formatted raw body data of response:\n{}".format(json.dumps(responseJSON, indent=4)))
+
+            return responseJSON
+
+        except Exception as e:
+            uLogger.debug(tb.format_exc())
+            uLogger.error("An empty dict will be return, because an error occurred in `_ParseJSON()` method with comment: {}".format(e))
+
+            return {}
+
+    def SendAPIRequest(self, url: str, reqType: str = "GET") -> dict:
+        """
+        Send GET or POST request to API server and receive JSON object.
+
+        self.header: dictionary of headers.
+        self.body: request body. `None` by default.
+        self.timeout: global request timeout, `15` seconds by default.
+        :param url: url with REST request.
+        :param reqType: send "GET" or "POST" request. `"GET"` by default.
+        :return: response JSON (dictionary).
+        """
+        if reqType.upper() not in ("GET", "POST"):
+            uLogger.error("You can define request type: `GET` or `POST`!")
+            raise Exception("Incorrect value")
+
+        if self.moreDebug:
+            uLogger.debug("Request parameters:")
+            uLogger.debug("    - REST API URL: {}".format(url))
+            uLogger.debug("    - request type: {}".format(reqType))
+            uLogger.debug("    - headers:\n{}".format(str(self.headers)))
+            uLogger.debug("    - body:\n{}".format(self.body))
+
+        with self.__lock:  # acquire the mutex lock
+            counter = 0
+            response = None
+            errMsg = ""
+
+            while not response and counter <= self.retry:
+                if reqType == "GET":
+                    response = requests.get(url, headers=self.headers, data=self.body, timeout=self.timeout)
+
+                if reqType == "POST":
+                    response = requests.post(url, headers=self.headers, data=self.body, timeout=self.timeout)
+
+                if self.moreDebug:
+                    uLogger.debug("Response:")
+                    uLogger.debug("    - status code: {}".format(response.status_code))
+                    uLogger.debug("    - reason: {}".format(response.reason))
+                    uLogger.debug("    - body length: {}".format(len(response.text)))
+                    uLogger.debug("    - headers:\n{}".format(response.headers))
+
+                # Server returns some headers:
+                # - `x-ratelimit-limit` — shows the settings of the current user limit for this method.
+                # - `x-ratelimit-remaining` — the number of remaining requests of this type per minute.
+                # - `x-ratelimit-reset` — time in seconds before resetting the request counter.
+                # if "x-ratelimit-remaining" in response.headers.keys() and response.headers["x-ratelimit-remaining"] == "0":
+                #     rateLimitWait = int(response.headers["x-ratelimit-reset"])
+                #     uLogger.debug("Rate limit exceeded. Waiting {} sec. for reset rate limit and then repeat...".format(rateLimitWait))
+                #     sleep(rateLimitWait)
+
+                # Error status codes: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+                if 400 <= response.status_code < 500:
+                    msg = "status code: [{}], response body: {}".format(response.status_code, response.text)
+                    uLogger.debug("    - not oK, but do not retry for 4xx errors, {}".format(msg))
+
+                    if "code" in response.text and "message" in response.text:
+                        msgDict = self._ParseJSON(rawData=response.text)
+                        uLogger.debug("HTTP-status code [{}], server message: {}".format(response.status_code, msgDict["message"]))
+
+                    counter = self.retry + 1  # do not retry for 4xx errors
+
+                if 500 <= response.status_code < 600:
+                    errMsg = "status code: [{}], response body: {}".format(response.status_code, response.text)
+                    uLogger.debug("    - not oK, {}".format(errMsg))
+
+                    if "code" in response.text and "message" in response.text:
+                        errMsgDict = self._ParseJSON(rawData=response.text)
+                        uLogger.debug("HTTP-status code [{}], error message: {}".format(response.status_code, errMsgDict["message"]))
+
+                    counter += 1
+
+                    if counter <= self.retry:
+                        uLogger.debug("Retry: [{}]. Wait {} sec. and try again...".format(counter, self.pause))
+                        sleep(self.pause)
+
+            responseJSON = self._ParseJSON(rawData=response.text)
+
+            if errMsg:
+                uLogger.error("Server returns not `oK` status! See full debug log.")
+                uLogger.error("    - not oK, {}".format(errMsg))
+
+        return responseJSON
 
     def ProjectFiles(self) -> dict:
         """
