@@ -10,21 +10,33 @@ Also, a mirrored project contains most important project artifacts: description,
 
 Replication and synchronization worked throw HTTP API.v5 of Gitee service.
 
+See also:
+- ⚙ [Documentation on GPReplicator class methods (for Python developers)]()
+
 Also, GPReplicator can be used as a CLI manager to work with Gitee projects in the console.
 For all examples, you will need to use the Gitee OAuth token.
 
 Examples:
 
-- 1
-- 2
-- 3
+- Get and show project tree files (also replace API gateway for Chinese service):
+
+  `python3 GPReplicator.py -v 10 -gg https://gitee.ru/api/v5 -gt "your_token" -go "project_group_owner" -gp "repository_name" --files`
+
+  Example:
+
+  `python3 GPReplicator.py -v 10 -gg https://gitee.ru/api/v5 -gt "token" -go tim55667757 -gp PriceGenerator --files`
+
+- Get and show project description:
+
+  `python3 GPReplicator.py -v 10 -gg https://gitee.ru/api/v5 -gt "token" -go "owner" -gp "repository" --description`
+
+- Get and show project issues:
+
+  `python3 GPReplicator.py -v 10 -gg https://gitee.ru/api/v5 -gt "token" -go "owner" -gp "repository" --issues`
 
 More CLI examples see in documentation:
 - 🇷🇺 [In Russian](https://3logicgroup.github.io/GiteeProjectsReplicator/)
 - 🇺🇸 [In English](https://github.com/3LogicGroup/GiteeProjectsReplicator/blob/master/README_EN.md)
-
-See also:
-- ⚙ [Documentation on GPReplicator class methods (for Python developers)]()
 """
 
 
