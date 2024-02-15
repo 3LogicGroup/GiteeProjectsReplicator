@@ -6,12 +6,12 @@
 """
 **Gitee Projects Replicator**, **GPReplicator** or **GPR** is the simple Python API for mirroring projects
 from/to Chinese gitee.com to/from Russian gitee.ru or another git-repository as GitHub, GitLab etc.
-Also, mirrored project contains most important project artifacts: description, issues, milestones, releases and documentation.
+Also, a mirrored project contains most important project artifacts: description, issues, milestones, releases and documentation.
 
 Replication and synchronization worked throw HTTP API.v5 of Gitee service.
 
-Also, GPReplicator can be used as CLI-manager to work with Gitee projects in the console.
-For all examples you will need to use the Gitee OAuth token.
+Also, GPReplicator can be used as a CLI manager to work with Gitee projects in the console.
+For all examples, you will need to use the Gitee OAuth token.
 
 Examples:
 
@@ -86,8 +86,8 @@ class GiteeTransport:
     def __init__(self):
         """Main class init."""
 
-        self.gAPIGateway = "https://gitee.ru/api/v5/"
-        """API gateway of Gitee service. Default: `https://gitee.ru/api/v5/`"""
+        self.gAPIGateway = "https://gitee.ru/api/v5"
+        """API gateway of Gitee service. Default: `https://gitee.ru/api/v5`"""
 
         self.gToken = None
         """Your API token at Gitee service. Default: `None`"""
@@ -98,9 +98,22 @@ class GiteeTransport:
         self.gProject = None
         """Project on Gitee service for mirroring. Default: `None`"""
 
+    def ProjectFiles(self) -> dict:
+        """
+        Get project files.
+
+        :return: dict with all project files objects.
+        """
+        files = {}
+
+        uLogger.debug("Raw files tree data:")
+        uLogger.debug(files)
+
+        return files
+
     def Description(self) -> dict:
         """
-        Get project's description.
+        Get project description.
 
         :return: dict with project issues.
         """
@@ -113,7 +126,7 @@ class GiteeTransport:
 
     def Issues(self) -> dict:
         """
-        Get all of project's issues.
+        Get all project issues.
 
         :return: dict with project issues.
         """
@@ -126,7 +139,7 @@ class GiteeTransport:
 
     def Milestones(self) -> dict:
         """
-        Get all of project's milestones.
+        Get all project milestones.
 
         :return: dict with project milestones.
         """
@@ -139,7 +152,7 @@ class GiteeTransport:
 
     def Releases(self) -> dict:
         """
-        Get all of project's published releases.
+        Get all project published releases.
 
         :return: dict with project releases.
         """
@@ -173,10 +186,11 @@ def ParseArgs():
     parser.add_argument("--debug-level", "--verbosity", "-v", type=int, default=20, help="Option: showing STDOUT messages of minimal debug level, e.g., 10 = DEBUG, 20 = INFO, 30 = WARNING, 40 = ERROR, 50 = CRITICAL.")
 
     # commands:
-    parser.add_argument("--description", "-d", action="store_true", help="Command: show Gitee project's description.")
-    parser.add_argument("--issues", "-i", action="store_true", help="Command: show list of Gitee project's issues.")
-    parser.add_argument("--milestones", "-m", action="store_true", help="Command: show list of Gitee project's milestones.")
-    parser.add_argument("--releases", "-r", action="store_true", help="Command: show list of Gitee project's releases.")
+    parser.add_argument("--files", "-f", action="store_true", help="Command: show Gitee project files.")
+    parser.add_argument("--description", "-d", action="store_true", help="Command: show Gitee project description.")
+    parser.add_argument("--issues", "-i", action="store_true", help="Command: show list of Gitee project issues.")
+    parser.add_argument("--milestones", "-m", action="store_true", help="Command: show list of Gitee project milestones.")
+    parser.add_argument("--releases", "-r", action="store_true", help="Command: show list of Gitee project releases.")
 
     cmdArgs = parser.parse_args()
     return cmdArgs
@@ -220,6 +234,9 @@ def Main():
             projectModel.gProject = args.gitee_project
 
         # --- do one or more commands:
+
+        if args.files:
+            projectModel.ProjectFiles()
 
         if args.description:
             projectModel.Description()
