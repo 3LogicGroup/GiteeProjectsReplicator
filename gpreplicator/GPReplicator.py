@@ -11,7 +11,7 @@ Also, a mirrored project contains most important project artifacts: description,
 Replication and synchronization worked throw HTTP API.v5 of Gitee service.
 
 See also:
-- ⚙ [Documentation on GPReplicator class methods (for Python developers)]()
+- ⚙ [Documentation on GPReplicator class methods (for Python developers)]()вс
 
 Also, GPReplicator can be used as a CLI manager to work with Gitee projects in the console.
 For all examples, you will need to use the Gitee OAuth token.
@@ -130,27 +130,70 @@ class GiteeTransport:
         self.headers = {
             "Content-Type": "application/json",
             "accept": "application/json",
-            "x-app-name": "GPReplicator",
+            "x-app-name": "3LogicGroup.GPReplicator",
         }
         """
         Headers which send in every request to broker server.
-        Default: `{"Content-Type": "application/json", "accept": "application/json", "x-app-name": "GPReplicator"}`.
+
+        Default: `{"Content-Type": "application/json", "accept": "application/json", "x-app-name": "3LogicGroup.GPReplicator"}`.
         """
 
         self.body = None
         """Request body which send to broker server. Default: `None`."""
 
         self.gToken = None
-        """Your API token at Gitee service. Default: `None`"""
+        """
+        Your API token at Gitee service.
+
+        You can also use the environment variable `GITEE_TOKEN` or the key `--gitee-token` to define this parameter.
+        
+        Default: `None`.
+        """
+
+        try:
+            self.gToken = r"{}".format(os.environ["GITEE_TOKEN"])
+            uLogger.debug("API token for Gitee service set up from environment variable `GITEE_TOKEN`")
+
+        except KeyError:
+            uLogger.debug("Environment variable `GITEE_TOKEN` is empty. So you can use the variable `gToken` or the key `--gitee-token` to define it.")
 
         self.gOwner = None
-        """Project owner on Gitee service. Default: `None`"""
+        """
+        Project owner on Gitee service. This is the space name to which the repository belongs (name of enterprise, organization or individual.
+
+        You can also use the environment variable `GITEE_OWNER` or the key `--gitee-owner` to define this parameter.
+
+        Default: `None`.
+        """
+
+        try:
+            self.gOwner = r"{}".format(os.environ["GITEE_OWNER"])
+            uLogger.debug("Space name for Gitee service set up from environment variable `GITEE_OWNER`")
+
+        except KeyError:
+            uLogger.debug("Environment variable `GITEE_OWNER` is empty. So you can use the variable `gOwner` or the key `--gitee-owner` to define it.")
 
         self.gProject = None
-        """Project on Gitee service for mirroring. Default: `None`"""
+        """
+        Project or repository name on Gitee service for mirroring.
+
+        You can also use the environment variable `GITEE_PROJECT` or the key `--gitee-project` to define this parameter.
+
+        Default: `None`.
+        """
+
+        try:
+            self.gProject = r"{}".format(os.environ["GITEE_PROJECT"])
+            uLogger.debug("Project name for Gitee service set up from environment variable `GITEE_PROJECT`")
+
+        except KeyError:
+            uLogger.debug("Environment variable `GITEE_PROJECT` is empty. So you can use the variable `gProject` or the key `--gitee-project` to define it.")
+
+        self.gSHA = None
+        """It can be the branch name (such as master), commit or the SHA value, which you are interested in. It used in some class methods. Default: `None`"""
 
         self.moreDebug = False
-        """Enables more debug information in this class, such as net request and response headers in all methods. `False` by default."""
+        """Enables more debug information in this class, such as net request/response body and headers in all methods. `False` by default."""
 
     def _ParseJSON(self, rawData="{}") -> dict:
         """
@@ -162,7 +205,7 @@ class GiteeTransport:
         try:
             responseJSON = json.loads(rawData) if rawData else {}
 
-            uLogger.debug("JSON formatted raw body data of response:\n{}".format(json.dumps(responseJSON, indent=4)))
+            uLogger.debug("JSON-data of raw response body:\n{}".format(json.dumps(responseJSON, indent=4)))
 
             return responseJSON
 
@@ -192,7 +235,7 @@ class GiteeTransport:
             uLogger.debug("    - REST API URL: {}".format(url))
             uLogger.debug("    - request type: {}".format(reqType))
             uLogger.debug("    - headers:\n{}".format(str(self.headers)))
-            uLogger.debug("    - body:\n{}".format(self.body))
+            uLogger.debug("    - raw request body:\n{}".format(self.body))
 
         with self.__lock:  # acquire the mutex lock
             counter = 0
@@ -257,16 +300,27 @@ class GiteeTransport:
 
     def ProjectFiles(self) -> dict:
         """
-        Get project files.
+        Get all project files.
 
-        :return: dict with all project files objects.
+        All the variables: `gToken`, `gOwner`, `gProject` and `gSHA` must be defined for using this method!
+
+        `gSHA` can be the branch name (such as master), commit or the SHA value, which you are interested in.
+
+        :return: dictionary with user's portfolio.
         """
-        files = {}
+        if self.gToken is None or not self.gToken or self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject or self.gSHA is None or not self.gSHA:
+            uLogger.error("All the variables: `gToken`, `gOwner`, `gProject` and `gSHA` must be defined for using `ProjectFiles()` method!")
+            raise Exception("Some parameters are required")
 
-        uLogger.debug("Raw files tree data:")
-        uLogger.debug(files)
+        uLogger.debug("Requesting all project files. Wait, please...")
 
-        return files
+        projectFilesURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/git/trees/{self.gSHA}"
+        projectFiles = self.SendAPIRequest(projectFilesURL, reqType="GET")
+
+        if self.moreDebug:
+            uLogger.debug("Project files data successfully received")
+
+        return projectFiles
 
     def Description(self) -> dict:
         """
@@ -339,6 +393,7 @@ def ParseArgs():
     parser.add_argument("--gitee-token", "-gt", type=str, help="Option: your API token on Gitee service.")
     parser.add_argument("--gitee-owner", "-go", type=str, help="Option: project owner on Gitee service.")
     parser.add_argument("--gitee-project", "-gp", type=str, help="Option: project on Gitee service for mirroring.")
+    parser.add_argument("--gitee-sha", "-gs", "-gsha", type=str, help="Option: it can be the branch name (such as master), commit or the SHA value, which you are interested in.")
 
     parser.add_argument("--debug-level", "--verbosity", "-v", type=int, default=20, help="Option: showing STDOUT messages of minimal debug level, e.g., 10 = DEBUG, 20 = INFO, 30 = WARNING, 40 = ERROR, 50 = CRITICAL.")
 
@@ -379,7 +434,7 @@ def Main():
         # --- set options:
 
         if args.gitee_gateway:
-            projectModel.gAPIGatewayToken = args.gitee_gateway
+            projectModel.gAPIGateway = args.gitee_gateway
 
         if args.gitee_token:
             projectModel.gToken = args.gitee_token
@@ -389,6 +444,9 @@ def Main():
 
         if args.gitee_project:
             projectModel.gProject = args.gitee_project
+
+        if args.gitee_sha:
+            projectModel.gSHA = args.gitee_sha
 
         # --- do one or more commands:
 
