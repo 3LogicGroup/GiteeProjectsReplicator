@@ -129,13 +129,14 @@ class GiteeTransport:
 
         self.headers = {
             "Content-Type": "application/json",
+            "charset": "UTF-8",
             "accept": "application/json",
             "x-app-name": "3LogicGroup.GPReplicator",
         }
         """
         Headers which send in every request to broker server.
 
-        Default: `{"Content-Type": "application/json", "accept": "application/json", "x-app-name": "3LogicGroup.GPReplicator"}`.
+        Default: `{"Content-Type": "application/json", "charset": "UTF-8", "accept": "application/json", "x-app-name": "3LogicGroup.GPReplicator"}`.
         """
 
         self.body = None
@@ -192,6 +193,9 @@ class GiteeTransport:
         self.gSHA = None
         """It can be the branch name (such as master), commit or the SHA value, which you are interested in. It used in some class methods. Default: `None`"""
 
+        self.gRecursive = False
+        """You can set this variable to `True` if you want to receive data from Gitee service recursively. It used in some class methods. Default: `False`"""
+
         self.moreDebug = False
         """Enables more debug information in this class, such as net request/response body and headers in all methods. `False` by default."""
 
@@ -205,7 +209,8 @@ class GiteeTransport:
         try:
             responseJSON = json.loads(rawData) if rawData else {}
 
-            uLogger.debug("JSON-data of raw response body:\n{}".format(json.dumps(responseJSON, indent=4)))
+            if self.moreDebug:
+                uLogger.debug("JSON-data of raw response body:\n{}".format(json.dumps(responseJSON, indent=4)))
 
             return responseJSON
 
@@ -306,6 +311,8 @@ class GiteeTransport:
 
         `gSHA` can be the branch name (such as master), commit or the SHA value, which you are interested in.
 
+        Also, you can set the `gRecursive` variable to `True` if you want to receive all tree files in all directories recursively.
+
         :return: dictionary with user's portfolio.
         """
         if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject or self.gSHA is None or not self.gSHA:
@@ -314,11 +321,24 @@ class GiteeTransport:
 
         uLogger.debug("Requesting all project files. Wait, please...")
 
-        projectFilesURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/git/trees/{self.gSHA}"
+        projectFilesURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/git/trees/{self.gSHA}?recursive={1 if self.gRecursive else 0}"
         projectFiles = self.SendAPIRequest(projectFilesURL, reqType="GET")
 
-        if self.moreDebug:
-            uLogger.debug("Project files data successfully received")
+        if projectFiles is not None and "tree" in projectFiles.keys():
+            count = len(projectFiles['tree'])
+
+            if self.moreDebug:
+                uLogger.debug("Project files data successfully received. Records: [{count}]")
+
+            if count:
+                info = []
+
+                for item in projectFiles['tree']:
+                    info.append("|-> " + item['path'])
+
+                infoText = f"List of all project files [{count}]:\n. {self.gProject} repository\n" + "\n".join(sorted(info))
+
+                uLogger.info(infoText)
 
         return projectFiles
 
@@ -394,6 +414,7 @@ def ParseArgs():
     parser.add_argument("--gitee-owner", "-go", type=str, help="Option: project owner on Gitee service.")
     parser.add_argument("--gitee-project", "-gp", type=str, help="Option: project on Gitee service for mirroring.")
     parser.add_argument("--gitee-sha", "-gs", "-gsha", type=str, help="Option: it can be the branch name (such as master), commit or the SHA value, which you are interested in.")
+    parser.add_argument("--gitee-recursive", "-gr", action="store_true", help="Option: You can set this flag if you want to receive data from Gitee service recursively.")
 
     parser.add_argument("--debug-level", "--verbosity", "-v", type=int, default=20, help="Option: showing STDOUT messages of minimal debug level, e.g., 10 = DEBUG, 20 = INFO, 30 = WARNING, 40 = ERROR, 50 = CRITICAL.")
 
@@ -447,6 +468,9 @@ def Main():
 
         if args.gitee_sha:
             projectModel.gSHA = args.gitee_sha
+
+        if args.gitee_recursive is not None:
+            projectModel.gRecursive = args.gitee_recursive
 
         # --- do one or more commands:
 
