@@ -302,14 +302,14 @@ class GiteeTransport:
         """
         Get all project files.
 
-        All the variables: `gToken`, `gOwner`, `gProject` and `gSHA` must be defined for using this method!
+        All the variables: `gOwner`, `gProject` and `gSHA` must be defined for using this method!
 
         `gSHA` can be the branch name (such as master), commit or the SHA value, which you are interested in.
 
         :return: dictionary with user's portfolio.
         """
-        if self.gToken is None or not self.gToken or self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject or self.gSHA is None or not self.gSHA:
-            uLogger.error("All the variables: `gToken`, `gOwner`, `gProject` and `gSHA` must be defined for using `ProjectFiles()` method!")
+        if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject or self.gSHA is None or not self.gSHA:
+            uLogger.error("All the variables: `gOwner`, `gProject` and `gSHA` must be defined for using `ProjectFiles()` method!")
             raise Exception("Some parameters are required")
 
         uLogger.debug("Requesting all project files. Wait, please...")
