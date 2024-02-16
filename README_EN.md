@@ -13,9 +13,9 @@ If you work with GPReplicator as a class, each method returns an object (usually
 
 Here are simple CLI examples available after GPReplicator was installed. For all examples, you will need to use the Gitee OAuth token:
 
-- Get and show project tree files (also replace API gateway for Chinese service):
+- Get and show project tree files recursively (also replace API gateway for Chinese service):
   
-  `python3 GPReplicator.py -v 10 -gg https://gitee.ru/api/v5 -gt "your_token" -go "project_group_owner" -gp "repository_name" --files`
+  `python3 GPReplicator.py -v 10 -gg https://gitee.ru/api/v5 -gt "your_token" -go "project_group_owner" -gp "repository_name" --gitee-recursive --files`
   
   Example:
   
