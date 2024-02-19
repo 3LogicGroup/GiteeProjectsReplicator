@@ -335,9 +335,9 @@ class GiteeTransport:
                 info = []
 
                 for item in projectFiles['tree']:
-                    info.append("|-> " + item['path'])
+                    info.append("|-> " + item['path'] + f"{'' if item['type'] != 'tree' else '/'}")
 
-                infoText = f"List of all project files [{count}]:\n. {self.gProject} repository\n" + "\n".join(sorted(info))
+                infoText = f"{'List of all project files' if self.gRecursive else 'List of project files in root directory'} [{count}]:\n. {self.gProject} repository\n" + "\n".join(sorted(info))
 
                 uLogger.info(infoText)
 
