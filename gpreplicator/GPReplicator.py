@@ -5,13 +5,14 @@
 
 """
 **Gitee Projects Replicator**, **GPReplicator** or **GPR** is the simple Python API for mirroring projects
-from/to Chinese gitee.com to/from Russian gitee.ru or another git-repository as GitHub, GitLab etc.
+from/to Chinese gitee.com and Russian gitee.ru or another git-repository as GitHub, GitLab etc.
 Also, a mirrored project contains most important project artifacts: description, issues, milestones, releases and documentation.
 
 Replication and synchronization worked throw HTTP API.v5 of Gitee service.
 
 See also:
-- ⚙ [Documentation on GPReplicator class methods (for Python developers)]()вс
+- 📚 [Main documentation with examples](https://github.com/3LogicGroup/GiteeProjectsReplicator/blob/master/README_EN.md)
+- ⚙ [Documentation on GPReplicator class methods (for Python developers)](https://3logicgroup.github.io/GiteeProjectsReplicator/docs/gpreplicator/GPReplicator.html)
 
 Also, GPReplicator can be used as a CLI manager to work with Gitee projects in the console.
 For all examples, you will need to use the Gitee OAuth token.
@@ -35,7 +36,7 @@ Examples:
   `python3 GPReplicator.py -v 10 -gg https://gitee.ru/api/v5 -gt "token" -go "owner" -gp "repository" --issues`
 
 More CLI examples see in documentation:
-- 🇷🇺 [In Russian](https://3logicgroup.github.io/GiteeProjectsReplicator/)
+- 🇷🇺 [In Russian](https://3logicgroup.github.io/GiteeProjectsReplicator)
 - 🇺🇸 [In English](https://github.com/3LogicGroup/GiteeProjectsReplicator/blob/master/README_EN.md)
 """
 
