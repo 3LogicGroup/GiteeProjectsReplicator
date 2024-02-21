@@ -355,16 +355,39 @@ class GiteeTransport:
 
         return description
 
-    def Issues(self) -> dict:
+    def Issues(self) -> list[dict]:
         """
         Get all project issues.
 
-        :return: dict with project issues.
-        """
-        issues = {}
+        All the variables: `gOwner` and `gProject` must be defined for using this method!
 
-        uLogger.debug("Raw issues data:")
-        uLogger.debug(issues)
+        :return: list of dict with issues data.
+        """
+        if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject:
+            uLogger.error("All the variables: `gOwner` and `gProject` must be defined for using `Issues()` method!")
+            raise Exception("Some parameters are required")
+
+        uLogger.debug("Requesting all project issues. Wait, please...")
+
+        issuesURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/issues"
+        issues = self.SendAPIRequest(issuesURL, reqType="GET")
+
+        count = len(issues)
+        if issues is not None and isinstance(issues, list) and count:
+            if self.moreDebug:
+                uLogger.debug(f"Project issues data successfully received. Records: [{count}]")
+
+            info = []
+
+            for item in issues:
+                info.append(f"State: [{item['state']}] Type: [{item['issue_type']}] Created: [{item['created_at'].split('T')[0]}] Title: [{item['title']}]{' Milestone: [' + item['milestone']['title'] + ']' if item['milestone'] else ''}")
+
+            infoText = f"{'List of all project issues'} [{count}]:\n" + "\n".join(sorted(info))
+
+            uLogger.info(infoText)
+
+        else:
+            uLogger.info("There are no project issues")
 
         return issues
 
