@@ -450,6 +450,42 @@ class GiteeTransport:
 
         return releases
 
+    def Tags(self) -> list[dict]:
+        """
+        Get all project tags.
+
+        All the variables: `gOwner` and `gProject` must be defined for using this method!
+
+        :return: list of dict with project tags.
+        """
+        if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject:
+            uLogger.error("All the variables: `gOwner` and `gProject` must be defined for using `Tags()` method!")
+            raise Exception("Some parameters are required")
+
+        uLogger.debug("Requesting project tags. Wait, please...")
+
+        tagsURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/tags"
+        tags = self.SendAPIRequest(tagsURL, reqType="GET")
+
+        count = len(tags)
+        if tags is not None and isinstance(tags, list) and count:
+            if self.moreDebug:
+                uLogger.debug(f"Project tags data successfully received. Records: [{count}]")
+
+            info = []
+
+            for item in tags:
+                info.append(f"Created: [{item['commit']['date'].split('T')[0]}] Name: [{item['name']}]")
+
+            infoText = f"{'List of all project tags'} [{count}]:\n" + "\n".join(sorted(info))
+
+            uLogger.info(infoText)
+
+        else:
+            uLogger.info("There are no project tags")
+
+        return tags
+
 
 class GPReplicator(GiteeTransport):
     def __init__(self):
@@ -479,6 +515,7 @@ def ParseArgs():
     parser.add_argument("--issues", "-i", action="store_true", help="Command: show list of Gitee project issues.")
     parser.add_argument("--milestones", "-m", action="store_true", help="Command: show list of Gitee project milestones.")
     parser.add_argument("--releases", "-r", action="store_true", help="Command: show list of Gitee project releases.")
+    parser.add_argument("--tags", "-t", action="store_true", help="Command: show list of Gitee project tags.")
 
     cmdArgs = parser.parse_args()
     return cmdArgs
@@ -541,7 +578,7 @@ def Main():
         if args.releases:
             projectModel.Releases()
 
-        if args.description:
+        if args.tags:
             projectModel.Tags()
 
     except Exception as e:
