@@ -325,11 +325,11 @@ class GiteeTransport:
         projectFilesURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/git/trees/{self.gSHA}?recursive={1 if self.gRecursive else 0}"
         projectFiles = self.SendAPIRequest(projectFilesURL, reqType="GET")
 
-        if projectFiles is not None and "tree" in projectFiles.keys():
+        if projectFiles is not None and isinstance(projectFiles, dict) and "tree" in projectFiles.keys():
             count = len(projectFiles['tree'])
 
             if self.moreDebug:
-                uLogger.debug("Project files data successfully received. Records: [{count}]")
+                uLogger.debug(f"Project files data successfully received. Records: [{count}]")
 
             if count:
                 info = []
@@ -386,12 +386,32 @@ class GiteeTransport:
         """
         Get all project published releases.
 
-        :return: dict with project releases.
-        """
-        releases = {}
+        All the variables: `gOwner` and `gProject` must be defined for using this method!
 
-        uLogger.debug("Raw releases data:")
-        uLogger.debug(releases)
+        :return: dictionary with releases.
+        """
+        if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject:
+            uLogger.error("All the variables: `gOwner` and `gProject` must be defined for using `Releases()` method!")
+            raise Exception("Some parameters are required")
+
+        uLogger.debug("Requesting all project releases. Wait, please...")
+
+        releasesURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/releases"
+        releases = self.SendAPIRequest(releasesURL, reqType="GET")
+
+        count = len(releases)
+        if releases is not None and isinstance(releases, list) and count:
+            if self.moreDebug:
+                uLogger.debug(f"Project releases data successfully received. Records: [{count}]")
+
+            info = []
+
+            for item in releases:
+                info.append(f"[{item['created_at']}] [{item['tag_name']}] [{item['name']}]{' [Pre-release]' if item['prerelease'] else ''}")
+
+            infoText = f"{'List of all project releases'} [{count}]:\n" + "\n".join(sorted(info))
+
+            uLogger.info(infoText)
 
         return releases
 
