@@ -303,7 +303,7 @@ class GiteeTransport:
 
         return responseJSON
 
-    def ProjectFiles(self) -> dict:
+    def Files(self) -> dict:
         """
         Get all project files.
 
@@ -316,7 +316,7 @@ class GiteeTransport:
         :return: dictionary with user's portfolio data.
         """
         if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject or self.gSHA is None or not self.gSHA:
-            uLogger.error("All the variables: `gOwner`, `gProject` and `gSHA` must be defined for using `ProjectFiles()` method!")
+            uLogger.error("All the variables: `gOwner`, `gProject` and `gSHA` must be defined for using `Files()` method!")
             raise Exception("Some parameters are required")
 
         uLogger.debug("Requesting all project files. Wait, please...")
@@ -341,19 +341,6 @@ class GiteeTransport:
                 uLogger.info(infoText)
 
         return projectFiles
-
-    def Description(self) -> dict:
-        """
-        Get project description.
-
-        :return: dict with project issues.
-        """
-        description = {}
-
-        uLogger.debug("Raw description data:")
-        uLogger.debug(description)
-
-        return description
 
     def Issues(self) -> list[dict]:
         """
@@ -489,7 +476,6 @@ def ParseArgs():
 
     # commands:
     parser.add_argument("--files", "-f", action="store_true", help="Command: show Gitee project files.")
-    parser.add_argument("--description", "-d", action="store_true", help="Command: show Gitee project description.")
     parser.add_argument("--issues", "-i", action="store_true", help="Command: show list of Gitee project issues.")
     parser.add_argument("--milestones", "-m", action="store_true", help="Command: show list of Gitee project milestones.")
     parser.add_argument("--releases", "-r", action="store_true", help="Command: show list of Gitee project releases.")
@@ -544,10 +530,7 @@ def Main():
         # --- do one or more commands:
 
         if args.files:
-            projectModel.ProjectFiles()
-
-        if args.description:
-            projectModel.Description()
+            projectModel.Files()
 
         if args.issues:
             projectModel.Issues()
@@ -557,6 +540,9 @@ def Main():
 
         if args.releases:
             projectModel.Releases()
+
+        if args.description:
+            projectModel.Tags()
 
     except Exception as e:
         uLogger.error(e)
