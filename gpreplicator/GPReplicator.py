@@ -196,7 +196,7 @@ class GiteeTransport:
         self.gRecursive = False
         """You can set this variable to `True` if you want to receive data from Gitee service recursively. It used in some class methods. Default: `False`"""
 
-        self.moreDebug = True
+        self.moreDebug = False
         """Enables more debug information in this class, such as net request/response body and headers in all methods. `False` by default."""
 
     def _ParseJSON(self, rawData="{}") -> dict:
