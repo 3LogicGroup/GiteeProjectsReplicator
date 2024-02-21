@@ -27,9 +27,9 @@ Examples:
 
   `python3 GPReplicator.py -v 10 -gg https://gitee.ru/api/v5 -gt "token" -go tim55667757 -gp PriceGenerator --files`
 
-- Get and show project description:
+- Get and show project releases:
 
-  `python3 GPReplicator.py -v 10 -gg https://gitee.ru/api/v5 -gt "token" -go "owner" -gp "repository" --description`
+  `python3 GPReplicator.py -v 10 -gg https://gitee.ru/api/v5 -gt "token" -go "owner" -gp "repository" --releases`
 
 - Get and show project issues:
 
