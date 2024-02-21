@@ -6,12 +6,12 @@ Replication and synchronization worked through API.v5 of Gitee service.
 
 Also, GPReplicator can be used as a CLI manager to work with Gitee projects in the console (it has a rich keys and commands), which is convenient for integration when used in CI/CD processes, or you can use it as a Python module with `python import gpreplicator`.
 
-If you work with GPReplicator as a class, each method returns an object (usually of type dict) containing all the data available through the Gitee API. You can read more about the methods of the GPReplicator class here:
+If you work with GPReplicator as a class, each method returns an object (usually of type list or dict) containing all the data available through the Gitee API. You can read more about the methods of the GPReplicator class here:
 - ⚙ [Documentation on GPReplicator class methods (for Python developers)](https://3logicgroup.github.io/GiteeProjectsReplicator/docs/gpreplicator/GPReplicator.html)
 
 ## Quick start and examples
 
-Here are simple CLI examples available after GPReplicator was installed. For all examples, you will need to use the Gitee OAuth token:
+Here are simple CLI examples available after GPReplicator was installed. For all examples, you will need to use the [Gitee OAuth token](https://gitee.com/api/v5/oauth_doc):
 
 - Get and show project tree files recursively (also replace API gateway for Chinese service):
   

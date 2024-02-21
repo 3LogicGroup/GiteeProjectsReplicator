@@ -15,7 +15,7 @@ See also:
 - ⚙ [Documentation on GPReplicator class methods (for Python developers)](https://3logicgroup.github.io/GiteeProjectsReplicator/docs/gpreplicator/GPReplicator.html)
 
 Also, GPReplicator can be used as a CLI manager to work with Gitee projects in the console.
-For all examples, you will need to use the Gitee OAuth token.
+For all examples, you will need to use the [Gitee OAuth token](https://gitee.com/api/v5/oauth_doc).
 
 Examples:
 
@@ -58,7 +58,6 @@ More CLI examples see in documentation:
 
 import os
 import sys
-from typing import Optional, Union
 from datetime import datetime, timedelta
 
 import json
@@ -197,7 +196,7 @@ class GiteeTransport:
         self.gRecursive = False
         """You can set this variable to `True` if you want to receive data from Gitee service recursively. It used in some class methods. Default: `False`"""
 
-        self.moreDebug = False
+        self.moreDebug = True
         """Enables more debug information in this class, such as net request/response body and headers in all methods. `False` by default."""
 
     def _ParseJSON(self, rawData="{}") -> dict:
@@ -314,7 +313,7 @@ class GiteeTransport:
 
         Also, you can set the `gRecursive` variable to `True` if you want to receive all tree files in all directories recursively.
 
-        :return: dictionary with user's portfolio.
+        :return: dictionary with user's portfolio data.
         """
         if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject or self.gSHA is None or not self.gSHA:
             uLogger.error("All the variables: `gOwner`, `gProject` and `gSHA` must be defined for using `ProjectFiles()` method!")
@@ -369,26 +368,49 @@ class GiteeTransport:
 
         return issues
 
-    def Milestones(self) -> dict:
+    def Milestones(self) -> list[dict]:
         """
         Get all project milestones.
 
-        :return: dict with project milestones.
-        """
-        milestones = {}
+        All the variables: `gOwner` and `gProject` must be defined for using this method!
 
-        uLogger.debug("Raw milestones data:")
-        uLogger.debug(milestones)
+        :return: list of dict with milestones data.
+        """
+        if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject:
+            uLogger.error("All the variables: `gOwner` and `gProject` must be defined for using `Milestones()` method!")
+            raise Exception("Some parameters are required")
+
+        uLogger.debug("Requesting all project milestones. Wait, please...")
+
+        milestonesURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/milestones"
+        milestones = self.SendAPIRequest(milestonesURL, reqType="GET")
+
+        count = len(milestones)
+        if milestones is not None and isinstance(milestones, list) and count:
+            if self.moreDebug:
+                uLogger.debug(f"Project milestones data successfully received. Records: [{count}]")
+
+            info = []
+
+            for item in milestones:
+                info.append(f"State: [{item['state']}] Created: [{item['created_at'].split('T')[0]}] Deadline: [{item['due_on'].split('T')[0]}] Title: [{item['title']}] Open/Closed issues: [{item['open_issues']}/{item['closed_issues']}]")
+
+            infoText = f"{'List of all project milestones'} [{count}]:\n" + "\n".join(sorted(info))
+
+            uLogger.info(infoText)
+
+        else:
+            uLogger.info("There are no project milestones")
 
         return milestones
 
-    def Releases(self) -> dict:
+    def Releases(self) -> list[dict]:
         """
-        Get all project published releases.
+        Get all project published releases data.
 
         All the variables: `gOwner` and `gProject` must be defined for using this method!
 
-        :return: dictionary with releases.
+        :return: list of dict with releases.
         """
         if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject:
             uLogger.error("All the variables: `gOwner` and `gProject` must be defined for using `Releases()` method!")
@@ -407,11 +429,14 @@ class GiteeTransport:
             info = []
 
             for item in releases:
-                info.append(f"[{item['created_at']}] [{item['tag_name']}] [{item['name']}]{' [Pre-release]' if item['prerelease'] else ''}")
+                info.append(f"Created: [{item['created_at'].split('T')[0]}] Tag: [{item['tag_name']}] Release name: [{item['name']}]{' [Pre-release]' if item['prerelease'] else ''}")
 
             infoText = f"{'List of all project releases'} [{count}]:\n" + "\n".join(sorted(info))
 
             uLogger.info(infoText)
+
+        else:
+            uLogger.info("There are no project releases")
 
         return releases
 
