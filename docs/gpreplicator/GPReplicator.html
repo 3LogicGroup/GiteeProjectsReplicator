@@ -90,9 +90,6 @@
                                 <a class="function" href="#GiteeTransport.ProjectFiles">ProjectFiles</a>
                         </li>
                         <li>
-                                <a class="function" href="#GiteeTransport.Description">Description</a>
-                        </li>
-                        <li>
                                 <a class="function" href="#GiteeTransport.Issues">Issues</a>
                         </li>
                         <li>
@@ -150,7 +147,7 @@ Also, a mirrored project contains most important project artifacts: description,
 </ul>
 
 <p>Also, GPReplicator can be used as a CLI manager to work with Gitee projects in the console.
-For all examples, you will need to use the Gitee OAuth token.</p>
+For all examples, you will need to use the <a href="https://gitee.com/api/v5/oauth_doc">Gitee OAuth token</a>.</p>
 
 <p>Examples:</p>
 
@@ -499,28 +496,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
 <h6 id="returns">Returns</h6>
 
 <blockquote>
-  <p>dictionary with user's portfolio.</p>
-</blockquote>
-</div>
-
-
-                            </div>
-                            <div id="GiteeTransport.Description" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">Description</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">dict</span>:</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#GiteeTransport.Description"></a>
-    
-            <div class="docstring"><p>Get project description.</p>
-
-<h6 id="returns">Returns</h6>
-
-<blockquote>
-  <p>dict with project issues.</p>
+  <p>dictionary with user's portfolio data.</p>
 </blockquote>
 </div>
 
@@ -530,7 +506,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">Issues</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">dict</span>:</span></span>
+        <span class="name">Issues</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>:</span></span>
 
         
     </div>
@@ -538,10 +514,12 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
     
             <div class="docstring"><p>Get all project issues.</p>
 
+<p>All the variables: <code><a href="#GiteeTransport.gOwner">gOwner</a></code> and <code><a href="#GiteeTransport.gProject">gProject</a></code> must be defined for using this method!</p>
+
 <h6 id="returns">Returns</h6>
 
 <blockquote>
-  <p>dict with project issues.</p>
+  <p>list of dict with issues data.</p>
 </blockquote>
 </div>
 
@@ -551,7 +529,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">Milestones</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">dict</span>:</span></span>
+        <span class="name">Milestones</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>:</span></span>
 
         
     </div>
@@ -559,10 +537,12 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
     
             <div class="docstring"><p>Get all project milestones.</p>
 
+<p>All the variables: <code><a href="#GiteeTransport.gOwner">gOwner</a></code> and <code><a href="#GiteeTransport.gProject">gProject</a></code> must be defined for using this method!</p>
+
 <h6 id="returns">Returns</h6>
 
 <blockquote>
-  <p>dict with project milestones.</p>
+  <p>list of dict with milestones data.</p>
 </blockquote>
 </div>
 
@@ -572,18 +552,20 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">Releases</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">dict</span>:</span></span>
+        <span class="name">Releases</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>:</span></span>
 
         
     </div>
     <a class="headerlink" href="#GiteeTransport.Releases"></a>
     
-            <div class="docstring"><p>Get all project published releases.</p>
+            <div class="docstring"><p>Get all project published releases data.</p>
+
+<p>All the variables: <code><a href="#GiteeTransport.gOwner">gOwner</a></code> and <code><a href="#GiteeTransport.gProject">gProject</a></code> must be defined for using this method!</p>
 
 <h6 id="returns">Returns</h6>
 
 <blockquote>
-  <p>dict with project releases.</p>
+  <p>list of dict with releases.</p>
 </blockquote>
 </div>
 
@@ -663,7 +645,6 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
                 <dd id="GPReplicator.moreDebug" class="variable"><a href="#GiteeTransport.moreDebug">moreDebug</a></dd>
                 <dd id="GPReplicator.SendAPIRequest" class="function"><a href="#GiteeTransport.SendAPIRequest">SendAPIRequest</a></dd>
                 <dd id="GPReplicator.ProjectFiles" class="function"><a href="#GiteeTransport.ProjectFiles">ProjectFiles</a></dd>
-                <dd id="GPReplicator.Description" class="function"><a href="#GiteeTransport.Description">Description</a></dd>
                 <dd id="GPReplicator.Issues" class="function"><a href="#GiteeTransport.Issues">Issues</a></dd>
                 <dd id="GPReplicator.Milestones" class="function"><a href="#GiteeTransport.Milestones">Milestones</a></dd>
                 <dd id="GPReplicator.Releases" class="function"><a href="#GiteeTransport.Releases">Releases</a></dd>
