@@ -220,7 +220,7 @@ class GiteeTransport:
 
             return {}
 
-    def SendAPIRequest(self, url: str, reqType: str = "GET") -> dict:
+    def SendAPIRequest(self, url: str, reqType: str = "GET"):
         """
         Send GET or POST request to API server and receive JSON object.
 
@@ -229,7 +229,7 @@ class GiteeTransport:
         self.timeout: global request timeout, `15` seconds by default.
         :param url: url with REST request.
         :param reqType: send "GET" or "POST" request. `"GET"` by default.
-        :return: response JSON (dictionary).
+        :return: response JSON (list, dictionary or list of dictionaries).
         """
         if reqType.upper() not in ("GET", "POST"):
             uLogger.error("You can define request type: `GET` or `POST`!")
