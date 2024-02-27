@@ -22,6 +22,7 @@ class TestGPReplicatorMethods:
         self.projectModel.gToken = 111
         self.projectModel.gOwner = "tim55667757"
         self.projectModel.gProject = "PriceGenerator"
+        self.projectModel.gSHA = "master"
 
     def test__ParseJSONCheckType(self):
         assert isinstance(self.projectModel._ParseJSON(rawData="{}"), dict), "Not dict type returned!"
@@ -73,3 +74,45 @@ class TestGPReplicatorMethods:
 
         assert len(result) == len(testData[1]), f'Expected: `{len(testData[1])}`, actual: `{len(result)}`'
         assert result == testData[1], 'Expected: `{testData[1]}`, actual: `{result}`'
+
+    def test_FilesCheckType(self):
+        result = self.projectModel.Files()
+
+        assert isinstance(result, dict), "Not dict type returned!"
+
+    def test_FilesPositive(self):
+        self.projectModel.gRecursive = 1
+
+        result = self.projectModel.Files()
+
+        assert "tree" in result.keys(), f'"tree" not in result.keys()!'
+        assert len(result['tree']) == 46, f'Expected: `46`, actual: `{len(result["tree"])}`'
+
+        self.projectModel.gRecursive = 0
+
+        result = self.projectModel.Files()
+
+        assert "tree" in result.keys(), f'"tree" not in result.keys()!'
+        assert len(result['tree']) == 15, f'Expected: `15`, actual: `{len(result["tree"])}`'
+
+    def test_FilesNegative(self):
+        temp = self.projectModel.gSHA
+        self.projectModel.gSHA = ""
+
+        try:
+            self.projectModel.Files()
+
+            assert False, 'Expected exception `Some parameters are required`'
+
+        except Exception:
+            assert True
+
+        self.projectModel.gSHA = "0"
+
+        result = self.projectModel.Files()
+
+        assert "tree" in result.keys(), f'"tree" in result.keys()!'
+        assert len(result) == 4, f'Expected: `4`, actual: `{len(result)}`'
+        assert len(result['tree']) == 0, f'Expected: `0`, actual: `{len(result["tree"])}`'
+
+        self.projectModel.gSHA = temp
