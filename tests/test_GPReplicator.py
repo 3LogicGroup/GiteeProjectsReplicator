@@ -154,3 +154,40 @@ class TestGPReplicatorMethods:
             assert True
 
         self.projectModel.gProject = gProject
+
+    def test_MilestonesCheckType(self):
+        result = self.projectModel.Files()
+
+        assert isinstance(result, dict), "Not dict type returned"
+
+    def test_MilestonesPositive(self):
+        result = self.projectModel.Milestones()
+
+        assert len(result) == 0, f'Expected: `0`, actual: `{len(result)}`'
+
+    def test_MilestonesNegative(self):
+        gOwner = self.projectModel.gOwner
+        self.projectModel.gOwner = ""
+
+        try:
+            self.projectModel.Milestones()
+
+            assert False, 'Expected exception `Some parameters are required`'
+
+        except Exception:
+            assert True
+
+        self.projectModel.gOwner = gOwner
+
+        gProject = self.projectModel.gProject
+        self.projectModel.gProject = ""
+
+        try:
+            self.projectModel.Milestones()
+
+            assert False, 'Expected exception `Some parameters are required`'
+
+        except Exception:
+            assert True
+
+        self.projectModel.gProject = gProject
