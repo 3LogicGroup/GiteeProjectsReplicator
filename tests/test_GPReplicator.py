@@ -16,11 +16,15 @@ class TestGPReplicatorMethods:
         GPReplicator.uLogger.handlers[1].level = 50  # Disable debug logging for log.txt
 
         # set up default parameters:
-        self.project = GPReplicator.GPReplicator()
-        self.token = 111
+        self.projectModel = GPReplicator.GPReplicator()
+        self.projectModel.gAPIGateway = "https://gitee.com/api/v5"
+        self.projectModel.timeout = 180
+        self.projectModel.gToken = 111
+        self.projectModel.gOwner = "tim55667757"
+        self.projectModel.gProject = "PriceGenerator"
 
     def test__ParseJSONCheckType(self):
-        assert isinstance(self.project._ParseJSON(rawData="{}"), dict), "Not dict type returned!"
+        assert isinstance(self.projectModel._ParseJSON(rawData="{}"), dict), "Not dict type returned!"
 
     def test__ParseJSONPositive(self):
         testData = [
@@ -31,9 +35,9 @@ class TestGPReplicatorMethods:
         ]
 
         for test in testData:
-            result = self.project._ParseJSON(rawData=test[0])
+            result = self.projectModel._ParseJSON(rawData=test[0])
 
-            assert result == test[1], 'Expected: `_ParseJSON(rawData="{}", debug=False) == {}`, actual: `{}`'.format(test[0], test[1], result)
+            assert result == test[1], f'Expected: `_ParseJSON(rawData="{test[0]}", debug=False) == {test[1]}`, actual: `{result}`'
 
     def test__ParseJSONNegative(self):
         testData = [
@@ -41,6 +45,31 @@ class TestGPReplicatorMethods:
         ]
 
         for test in testData:
-            result = self.project._ParseJSON(rawData=test[0])
+            result = self.projectModel._ParseJSON(rawData=test[0])
 
             assert result == test[1], "Unexpected output!"
+
+    def test_SendAPIRequestCheckType(self):
+        result = self.projectModel.SendAPIRequest(
+            url=self.projectModel.gAPIGateway + f"/repos/{self.projectModel.gOwner}/{self.projectModel.gProject}/branches",
+            reqType="GET",
+        )
+
+        assert isinstance(result, list), "Not list of dictionaries type returned!"
+
+    def test_SendAPIRequestPositive(self):
+        testData = (self.projectModel.gAPIGateway + f"/repos/{self.projectModel.gOwner}/{self.projectModel.gProject}/branches", ["develop", "master"])
+
+        result = self.projectModel.SendAPIRequest(url=testData[0], reqType="GET")
+
+        assert len(result) == len(testData[1]), f'Expected: `{len(testData[1])}`, actual: `{len(result)}`'
+        assert result[0]["name"] == testData[1][0], 'Expected: `{testData[1][0]}`, actual: `{result[0]["name"]}`'
+        assert result[1]["name"] == testData[1][1], 'Expected: `{testData[1][1]}`, actual: `{result[1]["name"]}`'
+
+    def test_SendAPIRequestNegative(self):
+        testData = (self.projectModel.gAPIGateway + f"/repos/{self.projectModel.gOwner}/{self.projectModel.gProject}/milestones", [])
+
+        result = self.projectModel.SendAPIRequest(url=testData[0], reqType="GET")
+
+        assert len(result) == len(testData[1]), f'Expected: `{len(testData[1])}`, actual: `{len(result)}`'
+        assert result == testData[1], 'Expected: `{testData[1]}`, actual: `{result}`'
