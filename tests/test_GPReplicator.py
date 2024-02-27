@@ -156,7 +156,7 @@ class TestGPReplicatorMethods:
         self.projectModel.gProject = gProject
 
     def test_MilestonesCheckType(self):
-        result = self.projectModel.Files()
+        result = self.projectModel.Milestones()
 
         assert isinstance(result, dict), "Not dict type returned"
 
@@ -184,6 +184,43 @@ class TestGPReplicatorMethods:
 
         try:
             self.projectModel.Milestones()
+
+            assert False, 'Expected exception `Some parameters are required`'
+
+        except Exception:
+            assert True
+
+        self.projectModel.gProject = gProject
+
+    def test_ReleasesCheckType(self):
+        result = self.projectModel.Releases()
+
+        assert isinstance(result, dict), "Not dict type returned"
+
+    def test_ReleasesPositive(self):
+        result = self.projectModel.Releases()
+
+        assert len(result) == 0, f'Expected: `0`, actual: `{len(result)}`'
+
+    def test_ReleasesNegative(self):
+        gOwner = self.projectModel.gOwner
+        self.projectModel.gOwner = ""
+
+        try:
+            self.projectModel.Releases()
+
+            assert False, 'Expected exception `Some parameters are required`'
+
+        except Exception:
+            assert True
+
+        self.projectModel.gOwner = gOwner
+
+        gProject = self.projectModel.gProject
+        self.projectModel.gProject = ""
+
+        try:
+            self.projectModel.Releases()
 
             assert False, 'Expected exception `Some parameters are required`'
 
