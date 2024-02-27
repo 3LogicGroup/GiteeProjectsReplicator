@@ -342,13 +342,13 @@ class GiteeTransport:
 
         return projectFiles
 
-    def Issues(self) -> list[dict]:
+    def Issues(self) -> dict:
         """
         Get all project issues.
 
         All the variables: `gOwner` and `gProject` must be defined for using this method!
 
-        :return: list of dict with issues data.
+        :return: dict with all issues data.
         """
         if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject:
             uLogger.error("All the variables: `gOwner` and `gProject` must be defined for using `Issues()` method!")
@@ -356,7 +356,7 @@ class GiteeTransport:
 
         uLogger.debug("Requesting all project issues. Wait, please...")
 
-        issuesURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/issues"
+        issuesURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/issues?state=all"
         issues = self.SendAPIRequest(issuesURL, reqType="GET")
 
         count = len(issues)
