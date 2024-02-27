@@ -19,6 +19,7 @@ class TestGPReplicatorMethods:
         self.projectModel = GPReplicator.GPReplicator()
         self.projectModel.gAPIGateway = "https://gitee.com/api/v5"
         self.projectModel.timeout = 180
+        self.projectModel.retry = 10
         self.projectModel.gToken = 111
         self.projectModel.gOwner = "tim55667757"
         self.projectModel.gProject = "PriceGenerator"
