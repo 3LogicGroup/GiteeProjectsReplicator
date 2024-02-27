@@ -378,13 +378,13 @@ class GiteeTransport:
 
         return issues
 
-    def Milestones(self) -> list[dict]:
+    def Milestones(self) -> dict:
         """
         Get all project milestones.
 
         All the variables: `gOwner` and `gProject` must be defined for using this method!
 
-        :return: list of dict with milestones data.
+        :return: dict with all milestone data.
         """
         if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject:
             uLogger.error("All the variables: `gOwner` and `gProject` must be defined for using `Milestones()` method!")
@@ -414,13 +414,13 @@ class GiteeTransport:
 
         return milestones
 
-    def Releases(self) -> list[dict]:
+    def Releases(self) -> dict:
         """
         Get all project published releases data.
 
         All the variables: `gOwner` and `gProject` must be defined for using this method!
 
-        :return: list of dict with releases.
+        :return: dict with all releases data.
         """
         if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject:
             uLogger.error("All the variables: `gOwner` and `gProject` must be defined for using `Releases()` method!")
@@ -450,13 +450,13 @@ class GiteeTransport:
 
         return releases
 
-    def Tags(self) -> list[dict]:
+    def Tags(self) -> dict:
         """
         Get all project tags.
 
         All the variables: `gOwner` and `gProject` must be defined for using this method!
 
-        :return: list of dict with project tags.
+        :return: dict with all project tags.
         """
         if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject:
             uLogger.error("All the variables: `gOwner` and `gProject` must be defined for using `Tags()` method!")
