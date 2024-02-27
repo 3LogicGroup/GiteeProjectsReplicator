@@ -1,6 +1,9 @@
 # The order of packages is significant, because pip processes them in the order of appearance.
 # Changing the order has an impact on the overall integration  process, which may cause troubles later.
 
+# Build and test requirements:
+pytest >= 7.1.2  # MIT License
+
 # Documentation requirements:
 pdoc >= 12.3.1  # MIT License
 
