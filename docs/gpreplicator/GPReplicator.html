@@ -450,7 +450,7 @@ request will be sent without retries. This allows you to reduce the number of ca
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">SendAPIRequest</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">url</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">reqType</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;GET&#39;</span></span><span class="return-annotation">) -> <span class="nb">dict</span>:</span></span>
+        <span class="name">SendAPIRequest</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">url</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">reqType</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;GET&#39;</span></span><span class="return-annotation">):</span></span>
 
         
     </div>
@@ -472,7 +472,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
 <h6 id="returns">Returns</h6>
 
 <blockquote>
-  <p>response JSON (dictionary).</p>
+  <p>response JSON (list, dictionary or list of dictionaries).</p>
 </blockquote>
 </div>
 
@@ -509,7 +509,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">Issues</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>:</span></span>
+        <span class="name">Issues</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">dict</span>:</span></span>
 
         
     </div>
@@ -522,7 +522,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
 <h6 id="returns">Returns</h6>
 
 <blockquote>
-  <p>list of dict with issues data.</p>
+  <p>dict with all issues data.</p>
 </blockquote>
 </div>
 
@@ -532,7 +532,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">Milestones</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>:</span></span>
+        <span class="name">Milestones</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">dict</span>:</span></span>
 
         
     </div>
@@ -545,7 +545,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
 <h6 id="returns">Returns</h6>
 
 <blockquote>
-  <p>list of dict with milestones data.</p>
+  <p>dict with all milestone data.</p>
 </blockquote>
 </div>
 
@@ -555,7 +555,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">Releases</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>:</span></span>
+        <span class="name">Releases</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">dict</span>:</span></span>
 
         
     </div>
@@ -568,7 +568,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
 <h6 id="returns">Returns</h6>
 
 <blockquote>
-  <p>list of dict with releases.</p>
+  <p>dict with all releases data.</p>
 </blockquote>
 </div>
 
@@ -578,7 +578,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">Tags</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>:</span></span>
+        <span class="name">Tags</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">dict</span>:</span></span>
 
         
     </div>
@@ -591,7 +591,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
 <h6 id="returns">Returns</h6>
 
 <blockquote>
-  <p>list of dict with project tags.</p>
+  <p>dict with all project tags.</p>
 </blockquote>
 </div>
 
