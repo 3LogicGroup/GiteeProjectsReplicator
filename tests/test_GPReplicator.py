@@ -25,7 +25,7 @@ class TestGPReplicatorMethods:
         self.projectModel.gSHA = "master"
 
     def test__ParseJSONCheckType(self):
-        assert isinstance(self.projectModel._ParseJSON(rawData="{}"), dict), "Not dict type returned!"
+        assert isinstance(self.projectModel._ParseJSON(rawData="{}"), dict), "Not dict type returned"
 
     def test__ParseJSONPositive(self):
         testData = [
@@ -48,7 +48,7 @@ class TestGPReplicatorMethods:
         for test in testData:
             result = self.projectModel._ParseJSON(rawData=test[0])
 
-            assert result == test[1], "Unexpected output!"
+            assert result == test[1], "Unexpected output"
 
     def test_SendAPIRequestCheckType(self):
         result = self.projectModel.SendAPIRequest(
@@ -56,7 +56,7 @@ class TestGPReplicatorMethods:
             reqType="GET",
         )
 
-        assert isinstance(result, list), "Not list of dictionaries type returned!"
+        assert isinstance(result, list), "Not list of dictionaries type returned"
 
     def test_SendAPIRequestPositive(self):
         testData = (self.projectModel.gAPIGateway + f"/repos/{self.projectModel.gOwner}/{self.projectModel.gProject}/branches", ["develop", "master"])
@@ -78,7 +78,7 @@ class TestGPReplicatorMethods:
     def test_FilesCheckType(self):
         result = self.projectModel.Files()
 
-        assert isinstance(result, dict), "Not dict type returned!"
+        assert isinstance(result, dict), "Not dict type returned"
 
     def test_FilesPositive(self):
         self.projectModel.gRecursive = 1
@@ -92,11 +92,11 @@ class TestGPReplicatorMethods:
 
         result = self.projectModel.Files()
 
-        assert "tree" in result.keys(), f'"tree" not in result.keys()!'
+        assert "tree" in result.keys(), f'"tree" not in result.keys()'
         assert len(result['tree']) == 15, f'Expected: `15`, actual: `{len(result["tree"])}`'
 
     def test_FilesNegative(self):
-        temp = self.projectModel.gSHA
+        gSHA = self.projectModel.gSHA
         self.projectModel.gSHA = ""
 
         try:
@@ -111,8 +111,45 @@ class TestGPReplicatorMethods:
 
         result = self.projectModel.Files()
 
-        assert "tree" in result.keys(), f'"tree" in result.keys()!'
+        assert "tree" in result.keys(), f'"tree" in result.keys()'
         assert len(result) == 4, f'Expected: `4`, actual: `{len(result)}`'
         assert len(result['tree']) == 0, f'Expected: `0`, actual: `{len(result["tree"])}`'
 
-        self.projectModel.gSHA = temp
+        self.projectModel.gSHA = gSHA
+
+    def test_IssuesCheckType(self):
+        result = self.projectModel.Files()
+
+        assert isinstance(result, dict), "Not dict type returned"
+
+    def test_IssuesPositive(self):
+        result = self.projectModel.Issues()
+
+        assert len(result) > 0, f'Expected: `> 0`, actual: `{len(result)}`'
+
+    def test_IssuesNegative(self):
+        gOwner = self.projectModel.gOwner
+        self.projectModel.gOwner = ""
+
+        try:
+            self.projectModel.Issues()
+
+            assert False, 'Expected exception `Some parameters are required`'
+
+        except Exception:
+            assert True
+
+        self.projectModel.gOwner = gOwner
+
+        gProject = self.projectModel.gProject
+        self.projectModel.gProject = ""
+
+        try:
+            self.projectModel.Issues()
+
+            assert False, 'Expected exception `Some parameters are required`'
+
+        except Exception:
+            assert True
+
+        self.projectModel.gProject = gProject
