@@ -199,7 +199,7 @@ class GiteeTransport:
         self.moreDebug = False
         """Enables more debug information in this class, such as net request/response body and headers in all methods. `False` by default."""
 
-    def _ParseJSON(self, rawData="{}") -> dict:
+    def _ParseJSON(self, rawData="{}") -> dict | list | list[dict]:
         """
         Support function: parse JSON from response string.
 
