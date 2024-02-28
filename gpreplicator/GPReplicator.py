@@ -220,7 +220,7 @@ class GiteeTransport:
 
             return {}
 
-    def SendAPIRequest(self, url: str, reqType: str = "GET"):
+    def SendAPIRequest(self, url: str, reqType: str = "GET") -> dict | list | list[dict]:
         """
         Send GET or POST request to API server and receive JSON object.
 
@@ -345,17 +345,19 @@ class GiteeTransport:
 
                 uLogger.info(infoText)
         else:
+            projectFiles = {}
+
             uLogger.info("There are no project files in this repository")
 
         return projectFiles
 
-    def Issues(self) -> dict:
+    def Issues(self) -> list[dict]:
         """
         Get all project issues.
 
         All the variables: `gOwner` and `gProject` must be defined for using this method!
 
-        :return: dict with all issues data.
+        :return: list of dictionaries with all issues data.
         """
         if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject:
             uLogger.error("All the variables: `gOwner` and `gProject` must be defined for using `Issues()` method!")
@@ -382,17 +384,19 @@ class GiteeTransport:
             uLogger.info(infoText)
 
         else:
+            issues = []
+
             uLogger.info("There are no project issues")
 
         return issues
 
-    def Milestones(self) -> dict:
+    def Milestones(self) -> list[dict]:
         """
         Get all project milestones.
 
         All the variables: `gOwner` and `gProject` must be defined for using this method!
 
-        :return: dict with all milestone data.
+        :return: list of dictionaries with all milestone data.
         """
         if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject:
             uLogger.error("All the variables: `gOwner` and `gProject` must be defined for using `Milestones()` method!")
@@ -419,17 +423,19 @@ class GiteeTransport:
             uLogger.info(infoText)
 
         else:
+            milestones = []
+
             uLogger.info("There are no project milestones")
 
         return milestones
 
-    def Releases(self) -> dict:
+    def Releases(self) -> list[dict]:
         """
         Get all project published releases data.
 
         All the variables: `gOwner` and `gProject` must be defined for using this method!
 
-        :return: dict with all releases data.
+        :return: list of dictionaries with all releases data.
         """
         if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject:
             uLogger.error("All the variables: `gOwner` and `gProject` must be defined for using `Releases()` method!")
@@ -456,17 +462,19 @@ class GiteeTransport:
             uLogger.info(infoText)
 
         else:
+            releases = []
+
             uLogger.info("There are no project releases")
 
         return releases
 
-    def Tags(self) -> dict:
+    def Tags(self) -> list[dict]:
         """
         Get all project tags.
 
         All the variables: `gOwner` and `gProject` must be defined for using this method!
 
-        :return: dict with all project tags.
+        :return: list of dictionaries with all project tags.
         """
         if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject:
             uLogger.error("All the variables: `gOwner` and `gProject` must be defined for using `Tags()` method!")
@@ -493,6 +501,8 @@ class GiteeTransport:
             uLogger.info(infoText)
 
         else:
+            tags = []
+
             uLogger.info("There are no project tags")
 
         return tags
