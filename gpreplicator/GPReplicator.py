@@ -16,6 +16,7 @@ See also:
 
 Also, GPReplicator can be used as a CLI manager to work with Gitee projects in the console.
 For all examples, you will need to use the [Gitee OAuth token](https://gitee.com/api/v5/oauth_doc).
+Without an authorization token, most commands will be available, but no more than 60 requests from one IP address.
 
 Examples:
 
