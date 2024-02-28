@@ -58,7 +58,7 @@ More CLI examples see in documentation:
 
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime
 
 import json
 import requests
@@ -71,7 +71,6 @@ import gpreplicator.UniLogger as uLog
 import traceback as tb
 
 from multiprocessing import cpu_count, Lock
-from multiprocessing.pool import ThreadPool
 
 
 # --- Common technical parameters:
