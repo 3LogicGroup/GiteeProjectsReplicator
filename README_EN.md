@@ -28,3 +28,5 @@ Here are simple CLI examples available after GPReplicator was installed. For all
 - Get and show project issues:
   
   `python3 GPReplicator.py -v 10 -gg https://gitee.ru/api/v5 -gt "token" -go "owner" -gp "repository" --issues`
+
+To enable all debug information, such as net request and response headers in all methods use `--more` or `--more-debug` keys.
