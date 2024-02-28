@@ -506,6 +506,45 @@ class GiteeTransport:
 
         return tags
 
+    def Branches(self) -> list[dict]:
+        """
+        Get all project branches.
+
+        All the variables: `gOwner` and `gProject` must be defined for using this method!
+
+        :return: list of dictionaries with all project branches.
+        """
+        if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject:
+            uLogger.error("All the variables: `gOwner` and `gProject` must be defined for using `Branches()` method!")
+            raise Exception("Some parameters are required")
+
+        uLogger.debug("Requesting project branches. Wait, please...")
+
+        self.body = f"access_token={self.gToken}" if self.gToken is not None and self.gToken else None
+        branchesURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/branches?sort=name&direction=asc&page=1&per_page=100"
+        branches = self.SendAPIRequest(branchesURL, reqType="GET")
+
+        count = len(branches)
+        if branches is not None and isinstance(branches, list) and count:
+            if self.moreDebug:
+                uLogger.debug(f"Project branches data successfully received. Records: [{count}]")
+
+            info = []
+
+            for item in branches:
+                info.append(f"Name: [{item['name']}] Protected: [{'Yes' if item['protected'] else 'No'}]")
+
+            infoText = f"{'List of all project branches'} [{count}]:\n" + "\n".join(sorted(info))
+
+            uLogger.info(infoText)
+
+        else:
+            branches = []
+
+            uLogger.info("There are no project branches")
+
+        return branches
+
 
 class GPReplicator(GiteeTransport):
     def __init__(self):
@@ -537,6 +576,7 @@ def ParseArgs():
     parser.add_argument("--milestones", "-m", action="store_true", help="Command: show list of Gitee project milestones.")
     parser.add_argument("--releases", "-r", action="store_true", help="Command: show list of Gitee project releases.")
     parser.add_argument("--tags", "-t", action="store_true", help="Command: show list of Gitee project tags.")
+    parser.add_argument("--branches", "-b", action="store_true", help="Command: show list of Gitee project branches.")
 
     cmdArgs = parser.parse_args()
     return cmdArgs
@@ -604,6 +644,9 @@ def Main():
 
         if args.tags:
             projectModel.Tags()
+
+        if args.branches:
+            projectModel.Branches()
 
     except Exception as e:
         uLogger.error(e)
