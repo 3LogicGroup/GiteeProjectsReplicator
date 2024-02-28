@@ -265,3 +265,40 @@ class TestGPReplicatorMethods:
             assert True
 
         self.projectModel.gProject = gProject
+
+    def test_BranchesCheckType(self):
+        result = self.projectModel.Branches()
+
+        assert isinstance(result, list), "Not list of dictionaries type returned"
+
+    def test_BranchesPositive(self):
+        result = self.projectModel.Branches()
+
+        assert len(result) == 2, f'Expected: `2`, actual: `{len(result)}`'
+
+    def test_BranchesNegative(self):
+        gOwner = self.projectModel.gOwner
+        self.projectModel.gOwner = ""
+
+        try:
+            self.projectModel.Branches()
+
+            assert False, 'Expected exception `Some parameters are required`'
+
+        except Exception:
+            assert True
+
+        self.projectModel.gOwner = gOwner
+
+        gProject = self.projectModel.gProject
+        self.projectModel.gProject = ""
+
+        try:
+            self.projectModel.Branches()
+
+            assert False, 'Expected exception `Some parameters are required`'
+
+        except Exception:
+            assert True
+
+        self.projectModel.gProject = gProject
