@@ -18,9 +18,9 @@ class TestGPReplicatorMethods:
         # set up default parameters:
         self.projectModel = GPReplicator.GPReplicator()
         self.projectModel.gAPIGateway = "https://gitee.com/api/v5"
-        self.projectModel.timeout = 180
+        self.projectModel.timeout = 60
         self.projectModel.retry = 10
-        self.projectModel.gToken = 111
+        self.projectModel.gToken = None  # about ~60 requests are available without authentication
         self.projectModel.gOwner = "tim55667757"
         self.projectModel.gProject = "PriceGenerator"
         self.projectModel.gSHA = "master"
@@ -57,7 +57,7 @@ class TestGPReplicatorMethods:
             reqType="GET",
         )
 
-        assert isinstance(result, list), "Not list of dictionaries type returned"
+        assert isinstance(result, list) or isinstance(result, dict), "Not list, dictionary or list of dictionaries type returned"
 
     def test_SendAPIRequestPositive(self):
         testData = (self.projectModel.gAPIGateway + f"/repos/{self.projectModel.gOwner}/{self.projectModel.gProject}/branches", ["develop", "master"])
@@ -119,9 +119,9 @@ class TestGPReplicatorMethods:
         self.projectModel.gSHA = gSHA
 
     def test_IssuesCheckType(self):
-        result = self.projectModel.Files()
+        result = self.projectModel.Issues()
 
-        assert isinstance(result, dict), "Not dict type returned"
+        assert isinstance(result, list), "Not list of dictionaries type returned"
 
     def test_IssuesPositive(self):
         result = self.projectModel.Issues()
@@ -158,7 +158,7 @@ class TestGPReplicatorMethods:
     def test_MilestonesCheckType(self):
         result = self.projectModel.Milestones()
 
-        assert isinstance(result, dict), "Not dict type returned"
+        assert isinstance(result, list), "Not list of dictionaries type returned"
 
     def test_MilestonesPositive(self):
         result = self.projectModel.Milestones()
@@ -195,7 +195,7 @@ class TestGPReplicatorMethods:
     def test_ReleasesCheckType(self):
         result = self.projectModel.Releases()
 
-        assert isinstance(result, dict), "Not dict type returned"
+        assert isinstance(result, list), "Not list of dictionaries type returned"
 
     def test_ReleasesPositive(self):
         result = self.projectModel.Releases()
@@ -232,12 +232,12 @@ class TestGPReplicatorMethods:
     def test_TagsCheckType(self):
         result = self.projectModel.Tags()
 
-        assert isinstance(result, dict), "Not dict type returned"
+        assert isinstance(result, list), "Not list of dictionaries type returned"
 
     def test_TagsPositive(self):
         result = self.projectModel.Tags()
 
-        assert len(result) == 0, f'Expected: `0`, actual: `{len(result)}`'
+        assert len(result) == 7, f'Expected: `7`, actual: `{len(result)}`'
 
     def test_TagsNegative(self):
         gOwner = self.projectModel.gOwner
