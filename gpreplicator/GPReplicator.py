@@ -276,7 +276,7 @@ class GiteeTransport:
                     uLogger.debug("    - not oK, but do not retry for 4xx errors, {}".format(msg))
 
                     if response.status_code == 401:
-                        uLogger.warning("Access token is required! [403 Unauthorized]")
+                        uLogger.warning("Access token is required! [401 Unauthorized]")
 
                     if response.status_code == 403 and "Rate Limit Exceeded" in response.text:
                         uLogger.warning("Requests rate limit exceeded for unauthorized user and current ip-address! [403 Forbidden]")
