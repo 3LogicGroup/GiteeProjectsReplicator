@@ -128,7 +128,7 @@ class GiteeTransport:
         """Sleep time in seconds between retries, in all network requests 5 seconds by default."""
 
         self.headers = {
-            "Content-Type": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
             "charset": "UTF-8",
             "accept": "application/json",
             "x-app-name": "3LogicGroup.GPReplicator",
@@ -136,7 +136,7 @@ class GiteeTransport:
         """
         Headers which send in every request to broker server.
 
-        Default: `{"Content-Type": "application/json", "charset": "UTF-8", "accept": "application/json", "x-app-name": "3LogicGroup.GPReplicator"}`.
+        Default: `{"Content-Type": "application/x-www-form-urlencoded", "charset": "UTF-8", "accept": "application/json", "x-app-name": "3LogicGroup.GPReplicator"}`.
         """
 
         self.body = None
@@ -267,8 +267,8 @@ class GiteeTransport:
                     # - `X-RateLimit-Remaining` — the number of remaining requests.
                     # When `X-RateLimit-Remaining == 0` then `403 Forbidden (Rate Limit Exceeded)` message will be returned.
                     if "X-RateLimit-Limit" in response.headers.keys() and "X-RateLimit-Remaining" in response.headers.keys():
-                        uLogger.debug("    - X-RateLimit-Limit for current token and ip-address: {}".format(response.headers["X-RateLimit-Limit"]))
-                        uLogger.debug("    - X-RateLimit-Remaining for current token and ip-address: {}".format(response.headers["X-RateLimit-Remaining"]))
+                        uLogger.debug("    - X-RateLimit-Limit for unauthorized user and current ip-address: {}".format(response.headers["X-RateLimit-Limit"]))
+                        uLogger.debug("    - X-RateLimit-Remaining for unauthorized user and current ip-address: {}".format(response.headers["X-RateLimit-Remaining"]))
 
                 # Error status codes: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
                 if 400 <= response.status_code < 500:
@@ -276,7 +276,7 @@ class GiteeTransport:
                     uLogger.debug("    - not oK, but do not retry for 4xx errors, {}".format(msg))
 
                     if response.status_code == 403 and "Rate Limit Exceeded" in response.text:
-                        uLogger.warning("Requests rate limit exceeded for current token and ip-address! [403 Forbidden]")
+                        uLogger.warning("Requests rate limit exceeded for unauthorized user and current ip-address! [403 Forbidden]")
 
                     if "code" in response.text and "message" in response.text:
                         msgDict = self._ParseJSON(rawData=response.text)
@@ -325,6 +325,7 @@ class GiteeTransport:
 
         uLogger.debug("Requesting all project files. Wait, please...")
 
+        self.body = f"access_token={self.gToken}" if self.gToken is not None and self.gToken else None
         projectFilesURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/git/trees/{self.gSHA}?recursive={1 if self.gRecursive else 0}"
         projectFiles = self.SendAPIRequest(projectFilesURL, reqType="GET")
 
@@ -343,6 +344,8 @@ class GiteeTransport:
                 infoText = f"{'List of all project files' if self.gRecursive else 'List of project files in root directory'} [{count}]:\n. {self.gProject} repository\n" + "\n".join(sorted(info))
 
                 uLogger.info(infoText)
+        else:
+            uLogger.info("There are no project files in this repository")
 
         return projectFiles
 
@@ -360,6 +363,7 @@ class GiteeTransport:
 
         uLogger.debug("Requesting all project issues. Wait, please...")
 
+        self.body = f"access_token={self.gToken}" if self.gToken is not None and self.gToken else None
         issuesURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/issues?state=all"
         issues = self.SendAPIRequest(issuesURL, reqType="GET")
 
@@ -396,6 +400,7 @@ class GiteeTransport:
 
         uLogger.debug("Requesting all project milestones. Wait, please...")
 
+        self.body = f"access_token={self.gToken}" if self.gToken is not None and self.gToken else None
         milestonesURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/milestones"
         milestones = self.SendAPIRequest(milestonesURL, reqType="GET")
 
@@ -432,6 +437,7 @@ class GiteeTransport:
 
         uLogger.debug("Requesting all project releases. Wait, please...")
 
+        self.body = f"access_token={self.gToken}" if self.gToken is not None and self.gToken else None
         releasesURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/releases"
         releases = self.SendAPIRequest(releasesURL, reqType="GET")
 
@@ -468,6 +474,7 @@ class GiteeTransport:
 
         uLogger.debug("Requesting project tags. Wait, please...")
 
+        self.body = f"access_token={self.gToken}" if self.gToken is not None and self.gToken else None
         tagsURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/tags"
         tags = self.SendAPIRequest(tagsURL, reqType="GET")
 
