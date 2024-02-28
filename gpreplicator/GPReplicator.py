@@ -535,7 +535,7 @@ class GiteeTransport:
             for item in branches:
                 info.append(f"Name: [{item['name']}] Protected: [{'Yes' if item['protected'] else 'No'}]")
 
-            infoText = f"{'List of all project branches'} [{count}]:\n" + "\n".join(sorted(info))
+            infoText = f"{'List of all project branches'} [{count}]. First 100 shown:\n" + "\n".join(sorted(info))
 
             uLogger.info(infoText)
 
@@ -545,6 +545,39 @@ class GiteeTransport:
             uLogger.info("There are no project branches")
 
         return branches
+
+    def Repositories(self) -> list[dict]:
+        """
+        Get all project repositories.
+
+        :return: list of dictionaries with all available repositories for authorized user.
+        """
+        uLogger.debug("Requesting available repositories for authorized user. Wait, please...")
+
+        self.body = f"access_token={self.gToken}" if self.gToken is not None and self.gToken else None
+        reposURL = self.gAPIGateway + f"/user/repos?sort=full_name&direction=asc&page=1&per_page=100"
+        repos = self.SendAPIRequest(reposURL, reqType="GET")
+
+        count = len(repos)
+        if repos is not None and isinstance(repos, list) and count:
+            if self.moreDebug:
+                uLogger.debug(f"All available repositories data successfully received. Records: [{count}]")
+
+            info = []
+
+            for item in repos:
+                info.append(f"Name: [{item['full_name']}]\n- Description: [{item['description']}]\n- License: [{item['license']}] Public: [{'Yes' if item['public'] else 'No'}] Forked: [{'Yes' if item['fork'] else 'No'}] Watchers: [{item['watchers_count']}] Forks: [{item['forks_count']}] Stars: [{item['stargazers_count']}]")
+
+            infoText = f"{'List of all available repositories'} [{count}]. First 100 shown:\n" + "\n".join(sorted(info))
+
+            uLogger.info(infoText)
+
+        else:
+            repos = []
+
+            uLogger.info("There are no available repositories for current user")
+
+        return repos
 
 
 class GPReplicator(GiteeTransport):
@@ -578,6 +611,7 @@ def ParseArgs():
     parser.add_argument("--releases", "-r", action="store_true", help="Command: show list of Gitee project releases.")
     parser.add_argument("--tags", "-t", action="store_true", help="Command: show list of Gitee project tags.")
     parser.add_argument("--branches", "-b", action="store_true", help="Command: show list of Gitee project branches.")
+    parser.add_argument("--repos", action="store_true", help="Command: show list of all repositories available for authorized user.")
 
     cmdArgs = parser.parse_args()
     return cmdArgs
@@ -648,6 +682,9 @@ def Main():
 
         if args.branches:
             projectModel.Branches()
+
+        if args.repos:
+            projectModel.Repositories()
 
     except Exception as e:
         uLogger.error(e)
