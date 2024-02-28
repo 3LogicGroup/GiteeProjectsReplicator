@@ -276,7 +276,7 @@ class GiteeTransport:
                     uLogger.debug("    - not oK, but do not retry for 4xx errors, {}".format(msg))
 
                     if response.status_code == 403 and "Rate Limit Exceeded" in response.text:
-                        uLogger.warning("Rate limit exceeded for current token! [403 Forbidden]")
+                        uLogger.warning("Requests rate limit exceeded for current token and ip-address! [403 Forbidden]")
 
                     if "code" in response.text and "message" in response.text:
                         msgDict = self._ParseJSON(rawData=response.text)
