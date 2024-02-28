@@ -101,6 +101,9 @@
                         <li>
                                 <a class="function" href="#GiteeTransport.Tags">Tags</a>
                         </li>
+                        <li>
+                                <a class="function" href="#GiteeTransport.Branches">Branches</a>
+                        </li>
                 </ul>
 
             </li>
@@ -294,7 +297,7 @@ For all examples, you will need to use the <a href="https://gitee.com/api/v5/oau
     </div>
     <a class="headerlink" href="#GiteeTransport.timeout"></a>
     
-            <div class="docstring"><p>Server operations timeout in seconds. Default: <code>15</code>.</p>
+            <div class="docstring"><p>Server operations timeout in seconds. Default: <code>30</code>.</p>
 </div>
 
 
@@ -338,7 +341,7 @@ request will be sent without retries. This allows you to reduce the number of ca
     
             <div class="docstring"><p>Headers which send in every request to broker server.</p>
 
-<p>Default: <code>{"Content-Type": "application/json", "charset": "UTF-8", "accept": "application/json", "x-app-name": "3LogicGroup<a href="">gpreplicator.GPReplicator</a>"}</code>.</p>
+<p>Default: <code>{"Content-Type": "application/x-www-form-urlencoded", "charset": "UTF-8", "accept": "application/json", "x-app-name": "3LogicGroup<a href="">gpreplicator.GPReplicator</a>"}</code>.</p>
 </div>
 
 
@@ -450,7 +453,7 @@ request will be sent without retries. This allows you to reduce the number of ca
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">SendAPIRequest</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">url</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">reqType</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;GET&#39;</span></span><span class="return-annotation">):</span></span>
+        <span class="name">SendAPIRequest</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">url</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">reqType</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;GET&#39;</span></span><span class="return-annotation">) -> <span class="nb">dict</span> <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>:</span></span>
 
         
     </div>
@@ -509,7 +512,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">Issues</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">dict</span>:</span></span>
+        <span class="name">Issues</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>:</span></span>
 
         
     </div>
@@ -522,7 +525,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
 <h6 id="returns">Returns</h6>
 
 <blockquote>
-  <p>dict with all issues data.</p>
+  <p>list of dictionaries with all issues data.</p>
 </blockquote>
 </div>
 
@@ -532,7 +535,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">Milestones</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">dict</span>:</span></span>
+        <span class="name">Milestones</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>:</span></span>
 
         
     </div>
@@ -545,7 +548,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
 <h6 id="returns">Returns</h6>
 
 <blockquote>
-  <p>dict with all milestone data.</p>
+  <p>list of dictionaries with all milestone data.</p>
 </blockquote>
 </div>
 
@@ -555,7 +558,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">Releases</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">dict</span>:</span></span>
+        <span class="name">Releases</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>:</span></span>
 
         
     </div>
@@ -568,7 +571,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
 <h6 id="returns">Returns</h6>
 
 <blockquote>
-  <p>dict with all releases data.</p>
+  <p>list of dictionaries with all releases data.</p>
 </blockquote>
 </div>
 
@@ -578,7 +581,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
                                 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">Tags</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">dict</span>:</span></span>
+        <span class="name">Tags</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>:</span></span>
 
         
     </div>
@@ -591,7 +594,30 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
 <h6 id="returns">Returns</h6>
 
 <blockquote>
-  <p>dict with all project tags.</p>
+  <p>list of dictionaries with all project tags.</p>
+</blockquote>
+</div>
+
+
+                            </div>
+                            <div id="GiteeTransport.Branches" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">Branches</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#GiteeTransport.Branches"></a>
+    
+            <div class="docstring"><p>Get all project branches.</p>
+
+<p>All the variables: <code><a href="#GiteeTransport.gOwner">gOwner</a></code> and <code><a href="#GiteeTransport.gProject">gProject</a></code> must be defined for using this method!</p>
+
+<h6 id="returns">Returns</h6>
+
+<blockquote>
+  <p>list of dictionaries with all project branches.</p>
 </blockquote>
 </div>
 
@@ -675,6 +701,7 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
                 <dd id="GPReplicator.Milestones" class="function"><a href="#GiteeTransport.Milestones">Milestones</a></dd>
                 <dd id="GPReplicator.Releases" class="function"><a href="#GiteeTransport.Releases">Releases</a></dd>
                 <dd id="GPReplicator.Tags" class="function"><a href="#GiteeTransport.Tags">Tags</a></dd>
+                <dd id="GPReplicator.Branches" class="function"><a href="#GiteeTransport.Branches">Branches</a></dd>
 
             </div>
                                 </dl>
