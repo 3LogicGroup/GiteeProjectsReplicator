@@ -11,7 +11,7 @@ If you work with GPReplicator as a class, each method returns an object (usually
 
 ## Quick start and examples
 
-Here are simple CLI examples available after GPReplicator was installed. For all examples, you will need to use the [Gitee OAuth token](https://gitee.com/api/v5/oauth_doc):
+Here are simple CLI examples available after GPReplicator was installed. For all examples, you will need to use the [Gitee OAuth token](https://gitee.com/api/v5/oauth_doc). Without an authorization token, most commands will be available, but no more than 60 requests from one IP address.
 
 - Get and show project tree files recursively (also replace API gateway for Chinese service):
   
