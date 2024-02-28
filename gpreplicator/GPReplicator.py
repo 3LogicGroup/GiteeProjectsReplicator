@@ -509,6 +509,7 @@ def ParseArgs():
     parser.add_argument("--gitee-recursive", "-gr", action="store_true", help="Option: You can set this flag if you want to receive data from Gitee service recursively.")
 
     parser.add_argument("--debug-level", "--verbosity", "-v", type=int, default=20, help="Option: showing STDOUT messages of minimal debug level, e.g., 10 = DEBUG, 20 = INFO, 30 = WARNING, 40 = ERROR, 50 = CRITICAL.")
+    parser.add_argument("--more", "--more-debug", action="store_true", default=False, help="Option: `--debug-level` key only switch log level verbosity, but in addition `--more` key enable all debug information, such as net request and response headers in all methods.")
 
     # commands:
     parser.add_argument("--files", "-f", action="store_true", help="Command: show Gitee project files.")
@@ -545,6 +546,9 @@ def Main():
 
     try:
         # --- set options:
+        if args.more:
+            projectModel.moreDebug = True
+            uLogger.warning("More debug mode is enabled! See network requests, responses and its headers in the full log or run GPReplicator with the `--verbosity 10` key to show theres in console.")
 
         if args.gitee_gateway:
             projectModel.gAPIGateway = args.gitee_gateway
