@@ -302,3 +302,16 @@ class TestGPReplicatorMethods:
             assert True
 
         self.projectModel.gProject = gProject
+
+    def test_RepositoriesCheckType(self):
+        result = self.projectModel.Repositories()
+
+        assert isinstance(result, list), "Not list of dictionaries type returned"
+
+    def test_RepositoriesPositive(self):
+        result = self.projectModel.Repositories()
+
+        assert len(result) == 0, f'Expected: `0`, actual: `{len(result)}`'
+
+    def test_RepositoriesNegative(self):
+        assert True  # TODO test_RepositoriesNegative
