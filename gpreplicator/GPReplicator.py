@@ -551,10 +551,14 @@ class GiteeTransport:
 
     def Repositories(self) -> list[dict]:
         """
-        Get all project repositories.
+        Get available repositories for current user.
 
         :return: list of dictionaries with all available repositories for authorized user.
         """
+        if self.gToken is None or not self.gToken:
+            uLogger.error("Variable `gToken` must be defined for using `Repositories()` method!")
+            raise Exception("Some parameters are required")
+
         uLogger.debug("Requesting available repositories for authorized user. Wait, please...")
 
         self.body = f"access_token={self.gToken}" if self.gToken is not None and self.gToken else None

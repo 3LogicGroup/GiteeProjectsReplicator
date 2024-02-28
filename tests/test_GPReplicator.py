@@ -314,4 +314,15 @@ class TestGPReplicatorMethods:
         assert len(result) == 0, f'Expected: `0`, actual: `{len(result)}`'
 
     def test_RepositoriesNegative(self):
-        assert True  # TODO test_RepositoriesNegative
+        gToken = self.projectModel.gToken
+        self.projectModel.gToken = None
+
+        try:
+            self.projectModel.Repositories()
+
+            assert False, 'Expected exception `Some parameters are required`'
+
+        except Exception:
+            assert True
+
+        self.projectModel.gToken = gToken
