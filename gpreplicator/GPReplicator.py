@@ -113,8 +113,8 @@ class GiteeTransport:
         self.gAPIGateway = "https://gitee.ru/api/v5"
         """API gateway of Gitee service. Default: `https://gitee.ru/api/v5`"""
 
-        self.timeout = 15
-        """Server operations timeout in seconds. Default: `15`."""
+        self.timeout = 30
+        """Server operations timeout in seconds. Default: `30`."""
 
         self.retry = 3
         """
@@ -246,6 +246,7 @@ class GiteeTransport:
             counter = 0
             response = None
             errMsg = ""
+            responseJSON = {}
 
             while not response and counter <= self.retry:
                 if reqType == "GET":
@@ -261,19 +262,21 @@ class GiteeTransport:
                     uLogger.debug("    - body length: {}".format(len(response.text)))
                     uLogger.debug("    - headers:\n{}".format(response.headers))
 
-                # Server returns some headers:
-                # - `x-ratelimit-limit` — shows the settings of the current user limit for this method.
-                # - `x-ratelimit-remaining` — the number of remaining requests of this type per minute.
-                # - `x-ratelimit-reset` — time in seconds before resetting the request counter.
-                # if "x-ratelimit-remaining" in response.headers.keys() and response.headers["x-ratelimit-remaining"] == "0":
-                #     rateLimitWait = int(response.headers["x-ratelimit-reset"])
-                #     uLogger.debug("Rate limit exceeded. Waiting {} sec. for reset rate limit and then repeat...".format(rateLimitWait))
-                #     sleep(rateLimitWait)
+                    # Server returns some additional headers:
+                    # - `X-RateLimit-Limit` — shows the settings of the current user limit for this api-method.
+                    # - `X-RateLimit-Remaining` — the number of remaining requests.
+                    # When `X-RateLimit-Remaining == 0` then `403 Forbidden (Rate Limit Exceeded)` message will be returned.
+                    if "X-RateLimit-Limit" in response.headers.keys() and "X-RateLimit-Remaining" in response.headers.keys():
+                        uLogger.debug("    - X-RateLimit-Limit for current token and ip-address: {}".format(response.headers["X-RateLimit-Limit"]))
+                        uLogger.debug("    - X-RateLimit-Remaining for current token and ip-address: {}".format(response.headers["X-RateLimit-Remaining"]))
 
                 # Error status codes: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
                 if 400 <= response.status_code < 500:
                     msg = "status code: [{}], response body: {}".format(response.status_code, response.text)
                     uLogger.debug("    - not oK, but do not retry for 4xx errors, {}".format(msg))
+
+                    if response.status_code == 403 and "Rate Limit Exceeded" in response.text:
+                        uLogger.warning("Rate limit exceeded for current token! [403 Forbidden]")
 
                     if "code" in response.text and "message" in response.text:
                         msgDict = self._ParseJSON(rawData=response.text)
@@ -281,7 +284,7 @@ class GiteeTransport:
 
                     counter = self.retry + 1  # do not retry for 4xx errors
 
-                if 500 <= response.status_code < 600:
+                elif 500 <= response.status_code < 600:
                     errMsg = "status code: [{}], response body: {}".format(response.status_code, response.text)
                     uLogger.debug("    - not oK, {}".format(errMsg))
 
@@ -295,7 +298,8 @@ class GiteeTransport:
                         uLogger.debug("Retry: [{}]. Wait {} sec. and try again...".format(counter, self.pause))
                         sleep(self.pause)
 
-            responseJSON = self._ParseJSON(rawData=response.text)
+                else:
+                    responseJSON = self._ParseJSON(rawData=response.text)
 
             if errMsg:
                 uLogger.error("Server returns not `oK` status! See full debug log.")
