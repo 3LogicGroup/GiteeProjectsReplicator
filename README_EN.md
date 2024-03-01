@@ -1,6 +1,6 @@
 # Gitee Projects Replicator
 
-**Gitee Projects Replicator**, **GPReplicator** or **GPR** is the simple Python API containing transport and methods to be used for replication & synchronization projects from Gitee.ru or Gitee.com services. Also, a mirrored project contains most important project artifacts: description, issues, milestones, releases and documentation.
+**Gitee Projects Replicator**, **GPReplicator** or **GPR** is the simple Python API containing transport and methods to be used for replication & synchronization projects from Gitee.ru or Gitee.com services. Also, a mirrored project contains most important project artifacts: description, issues, milestones, releases and docs.
 
 Replication and synchronization worked through API.v5 of Gitee service.
 
