@@ -342,7 +342,7 @@ class GiteeTransport:
                 info = []
 
                 for item in projectFiles['tree']:
-                    info.append("|-> " + item['path'] + f"{'' if item['type'] != 'tree' else '/'}")
+                    info.append("|-> " + item['path'] + f"{'' if item['type'] != 'tree' else '/'}" + f" [sha: {item['sha']}]")
 
                 infoText = f"{'List of all project files' if self.gRecursive else 'List of project files in root directory'} [{count}]:\n. {self.gProject} repository\n" + "\n".join(sorted(info))
 
@@ -613,6 +613,7 @@ def ParseArgs():
 
     # commands:
     parser.add_argument("--files", "-f", action="store_true", help="Command: show Gitee project files.")
+    parser.add_argument("--get-file", action="store_true", help="Command: Get file blob by sha.")
     parser.add_argument("--issues", "-i", action="store_true", help="Command: show list of Gitee project issues.")
     parser.add_argument("--milestones", "-m", action="store_true", help="Command: show list of Gitee project milestones.")
     parser.add_argument("--releases", "-r", action="store_true", help="Command: show list of Gitee project releases.")
