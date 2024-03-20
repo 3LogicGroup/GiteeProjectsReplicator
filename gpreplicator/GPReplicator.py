@@ -192,13 +192,13 @@ class GiteeTransport:
             uLogger.debug("Environment variable `GITEE_PROJECT` is empty. So you can use the variable `gProject` or the key `--gitee-project` to define it.")
 
         self.gSHA = None
-        """It can be the branch name (such as master), commit or the SHA value, which you are interested in. It used in some class methods. Default: `None`"""
+        """It can be the branch name (such as master), commit or the SHA value, which you are interested in. It used in some class methods. Default: `None`."""
 
         self.gRecursive = False
-        """You can set this variable to `True` if you want to receive data from Gitee service recursively. It used in some class methods. Default: `False`"""
+        """You can set this variable to `True` if you want to receive data from Gitee service recursively. It used in some class methods. Default: `False`."""
 
-        self.saveToFile = None
-        """Local filename to save one file from remote repository by its SHA. It used in some class methods. Default: `None`"""
+        self.save = False
+        """If `True` then received file will be saved locally. Default: `False`."""
 
         self.moreDebug = False
         """Enables more debug information in this class, such as net request/response body and headers in all methods. `False` by default."""
@@ -367,7 +367,7 @@ class GiteeTransport:
 
         `gSHA` can be the SHA value, which you are interested in. You can get SHA value of files using `Files()` method.
 
-        Also, you can define the `saveToFile` variable with local filename you want to save file from remote repository.
+        If `save` variable is `True` then received file will be saved locally with name equal to its SHA.
 
         :return: blob (string) of file with base64-encoding.
         """
@@ -390,6 +390,14 @@ class GiteeTransport:
             infoText = f"Base64 decoded file data as unicode string [{len(content)} bytes]:\n{content}"
 
             uLogger.info(infoText)
+
+            if self.save:
+                localPath = os.path.join(os.path.abspath(os.path.curdir), self.gSHA)
+
+                with open(localPath, "w") as fH:
+                    fH.write(content)
+
+                uLogger.info(f"File saved to [{localPath}]")
 
         else:
             content = ""
@@ -650,7 +658,8 @@ def ParseArgs():
     parser.add_argument("--gitee-owner", "-go", type=str, help="Option: project owner on Gitee service.")
     parser.add_argument("--gitee-project", "-gp", type=str, help="Option: project on Gitee service for mirroring.")
     parser.add_argument("--gitee-sha", "-gs", "-gsha", type=str, help="Option: it can be the branch name (such as master), commit or the SHA value, which you are interested in.")
-    parser.add_argument("--gitee-recursive", "-gr", action="store_true", help="Option: You can set this flag if you want to receive data from Gitee service recursively.")
+    parser.add_argument("--gitee-recursive", "-gr", action="store_true", help="Option: you can set this flag if you want to receive data from Gitee service recursively.")
+    parser.add_argument("--save", action="store_true", help="Option: if key present then all received files will be saved locally with auto-replace data.")
 
     parser.add_argument("--debug-level", "--verbosity", "-v", type=int, default=20, help="Option: showing STDOUT messages of minimal debug level, e.g., 10 = DEBUG, 20 = INFO, 30 = WARNING, 40 = ERROR, 50 = CRITICAL.")
     parser.add_argument("--more", "--more-debug", action="store_true", default=False, help="Option: `--debug-level` key only switch log level verbosity, but in addition `--more` key enable all debug information, such as net request and response headers in all methods.")
@@ -715,7 +724,12 @@ def Main():
         if args.gitee_recursive is not None:
             projectModel.gRecursive = args.gitee_recursive
 
-        # --- do one or more commands:
+        if args.save:
+            projectModel.save = True
+
+            uLogger.debug("All received files will be saved locally 'as is' with auto-replace data!")
+
+            # --- do one or more commands:
 
         if args.files:
             projectModel.Files()
