@@ -81,6 +81,9 @@
                                 <a class="variable" href="#GiteeTransport.gRecursive">gRecursive</a>
                         </li>
                         <li>
+                                <a class="variable" href="#GiteeTransport.save">save</a>
+                        </li>
+                        <li>
                                 <a class="variable" href="#GiteeTransport.moreDebug">moreDebug</a>
                         </li>
                         <li>
@@ -88,6 +91,9 @@
                         </li>
                         <li>
                                 <a class="function" href="#GiteeTransport.Files">Files</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#GiteeTransport.GetFile">GetFile</a>
                         </li>
                         <li>
                                 <a class="function" href="#GiteeTransport.Issues">Issues</a>
@@ -204,7 +210,7 @@ Without an authorization token, most commands will be available, but no more tha
                 <section id="CPU_COUNT">
                     <div class="attr variable">
             <span class="name">CPU_COUNT</span>        =
-<span class="default_value">20</span>
+<span class="default_value">12</span>
 
         
     </div>
@@ -216,7 +222,7 @@ Without an authorization token, most commands will be available, but no more tha
                 <section id="CPU_USAGES">
                     <div class="attr variable">
             <span class="name">CPU_USAGES</span>        =
-<span class="default_value">19</span>
+<span class="default_value">11</span>
 
         
     </div>
@@ -422,7 +428,7 @@ request will be sent without retries. This allows you to reduce the number of ca
     </div>
     <a class="headerlink" href="#GiteeTransport.gSHA"></a>
     
-            <div class="docstring"><p>It can be the branch name (such as master), commit or the SHA value, which you are interested in. It used in some class methods. Default: <code>None</code></p>
+            <div class="docstring"><p>It can be the branch name (such as master), commit or the SHA value, which you are interested in. It used in some class methods. Default: <code>None</code>.</p>
 </div>
 
 
@@ -435,7 +441,20 @@ request will be sent without retries. This allows you to reduce the number of ca
     </div>
     <a class="headerlink" href="#GiteeTransport.gRecursive"></a>
     
-            <div class="docstring"><p>You can set this variable to <code>True</code> if you want to receive data from Gitee service recursively. It used in some class methods. Default: <code>False</code></p>
+            <div class="docstring"><p>You can set this variable to <code>True</code> if you want to receive data from Gitee service recursively. It used in some class methods. Default: <code>False</code>.</p>
+</div>
+
+
+                            </div>
+                            <div id="GiteeTransport.save" class="classattr">
+                                <div class="attr variable">
+            <span class="name">save</span>
+
+        
+    </div>
+    <a class="headerlink" href="#GiteeTransport.save"></a>
+    
+            <div class="docstring"><p>If <code>True</code> then received file will be saved locally. Default: <code>False</code>.</p>
 </div>
 
 
@@ -507,6 +526,33 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
 
 <blockquote>
   <p>dictionary with user's portfolio data.</p>
+</blockquote>
+</div>
+
+
+                            </div>
+                            <div id="GiteeTransport.GetFile" class="classattr">
+                                <div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">GetFile</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
+
+        
+    </div>
+    <a class="headerlink" href="#GiteeTransport.GetFile"></a>
+    
+            <div class="docstring"><p>Get file blob by its SHA.</p>
+
+<p>All the variables: <code><a href="#GiteeTransport.gOwner">gOwner</a></code>, <code><a href="#GiteeTransport.gProject">gProject</a></code> and <code><a href="#GiteeTransport.gSHA">gSHA</a></code> must be defined for using this method!</p>
+
+<p><code><a href="#GiteeTransport.gSHA">gSHA</a></code> can be the SHA value, which you are interested in. You can get SHA value of files using <code><a href="#GiteeTransport.Files">Files()</a></code> method.</p>
+
+<p>If <code><a href="#GiteeTransport.save">save</a></code> variable is <code>True</code> then received file will be saved locally with name equal to its SHA.</p>
+
+<h6 id="returns">Returns</h6>
+
+<blockquote>
+  <p>blob (string) of file with base64-encoding.</p>
 </blockquote>
 </div>
 
@@ -719,9 +765,11 @@ self.timeout: global request timeout, <code>15</code> seconds by default.</p>
                 <dd id="GPReplicator.gProject" class="variable"><a href="#GiteeTransport.gProject">gProject</a></dd>
                 <dd id="GPReplicator.gSHA" class="variable"><a href="#GiteeTransport.gSHA">gSHA</a></dd>
                 <dd id="GPReplicator.gRecursive" class="variable"><a href="#GiteeTransport.gRecursive">gRecursive</a></dd>
+                <dd id="GPReplicator.save" class="variable"><a href="#GiteeTransport.save">save</a></dd>
                 <dd id="GPReplicator.moreDebug" class="variable"><a href="#GiteeTransport.moreDebug">moreDebug</a></dd>
                 <dd id="GPReplicator.SendAPIRequest" class="function"><a href="#GiteeTransport.SendAPIRequest">SendAPIRequest</a></dd>
                 <dd id="GPReplicator.Files" class="function"><a href="#GiteeTransport.Files">Files</a></dd>
+                <dd id="GPReplicator.GetFile" class="function"><a href="#GiteeTransport.GetFile">GetFile</a></dd>
                 <dd id="GPReplicator.Issues" class="function"><a href="#GiteeTransport.Issues">Issues</a></dd>
                 <dd id="GPReplicator.Milestones" class="function"><a href="#GiteeTransport.Milestones">Milestones</a></dd>
                 <dd id="GPReplicator.Releases" class="function"><a href="#GiteeTransport.Releases">Releases</a></dd>
