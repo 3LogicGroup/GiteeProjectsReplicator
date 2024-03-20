@@ -63,6 +63,7 @@ from datetime import datetime
 
 import json
 import requests
+import base64
 
 from dateutil.tz import tzlocal
 from time import sleep
@@ -195,6 +196,9 @@ class GiteeTransport:
 
         self.gRecursive = False
         """You can set this variable to `True` if you want to receive data from Gitee service recursively. It used in some class methods. Default: `False`"""
+
+        self.saveToFile = None
+        """Local filename to save one file from remote repository by its SHA. It used in some class methods. Default: `None`"""
 
         self.moreDebug = False
         """Enables more debug information in this class, such as net request/response body and headers in all methods. `False` by default."""
@@ -342,17 +346,57 @@ class GiteeTransport:
                 info = []
 
                 for item in projectFiles['tree']:
-                    info.append("|-> " + item['path'] + f"{'' if item['type'] != 'tree' else '/'}" + f" [sha: {item['sha']}]")
+                    info.append("|-> " + item['path'] + f"{'' if item['type'] != 'tree' else '/'}" + f" [sha: {item['sha']}, size: {item['size']}]")
 
                 infoText = f"{'List of all project files' if self.gRecursive else 'List of project files in root directory'} [{count}]:\n. {self.gProject} repository\n" + "\n".join(sorted(info))
 
                 uLogger.info(infoText)
+
         else:
             projectFiles = {}
 
             uLogger.info("There are no project files in this repository")
 
         return projectFiles
+
+    def GetFile(self) -> str:
+        """
+        Get file blob by its SHA.
+
+        All the variables: `gOwner`, `gProject` and `gSHA` must be defined for using this method!
+
+        `gSHA` can be the SHA value, which you are interested in. You can get SHA value of files using `Files()` method.
+
+        Also, you can define the `saveToFile` variable with local filename you want to save file from remote repository.
+
+        :return: blob (string) of file with base64-encoding.
+        """
+        if self.gOwner is None or not self.gOwner or self.gProject is None or not self.gProject or self.gSHA is None or not self.gSHA:
+            uLogger.error("All the variables: `gOwner`, `gProject` and `gSHA` must be defined for using `GetFile()` method!")
+            raise Exception("Some parameters are required")
+
+        uLogger.debug(f"Requesting project file with SHA [{self.gSHA}]. Wait, please...")
+
+        self.body = f"access_token={self.gToken}" if self.gToken is not None and self.gToken else None
+        projectFileURL = self.gAPIGateway + f"/repos/{self.gOwner}/{self.gProject}/git/blobs/{self.gSHA}"
+        projectFile = self.SendAPIRequest(projectFileURL, reqType="GET")
+
+        if projectFile is not None and isinstance(projectFile, dict) and "content" in projectFile.keys() and "size" in projectFile.keys():
+            content = base64.b64decode(projectFile['content'], validate=True).decode('unicode_escape')
+
+            if self.moreDebug:
+                uLogger.debug(f"File data successfully received. Size, bytes: [{projectFile['size']}]")
+
+            infoText = f"Base64 decoded file data as unicode string [{len(content)} bytes]:\n{content}"
+
+            uLogger.info(infoText)
+
+        else:
+            content = ""
+
+            uLogger.info("No file data")
+
+        return content
 
     def Issues(self) -> list[dict]:
         """
@@ -675,6 +719,9 @@ def Main():
 
         if args.files:
             projectModel.Files()
+
+        if args.get_file:
+            projectModel.GetFile()
 
         if args.issues:
             projectModel.Issues()
