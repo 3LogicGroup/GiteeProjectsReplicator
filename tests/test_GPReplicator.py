@@ -118,6 +118,31 @@ class TestGPReplicatorMethods:
 
         self.projectModel.gSHA = gSHA
 
+    def test_GetFileCheckType(self):
+        result = self.projectModel.GetFile()
+
+        assert isinstance(result, str), "Not str type returned"
+
+    def test_GetFilePositive(self):
+        gSHA = self.projectModel.gSHA
+        self.projectModel.gSHA = "057e6382ef1052ac56e5e9184fdd4ef66bef2593"
+
+        result = self.projectModel.GetFile()
+
+        assert len(result) == 761, f'Expected: `761`, actual: `{len(result)}`'
+
+        self.projectModel.gSHA = gSHA
+
+    def test_GetFileNegative(self):
+        gSHA = self.projectModel.gSHA
+        self.projectModel.gSHA = "0"
+
+        result = self.projectModel.GetFile()
+
+        assert result == "", f'Expected: empty string, actual: `{result}`'
+
+        self.projectModel.gSHA = gSHA
+
     def test_IssuesCheckType(self):
         result = self.projectModel.Issues()
 
@@ -304,14 +329,24 @@ class TestGPReplicatorMethods:
         self.projectModel.gProject = gProject
 
     def test_RepositoriesCheckType(self):
+        gToken = self.projectModel.gToken
+        self.projectModel.gToken = "123"
+
         result = self.projectModel.Repositories()
 
         assert isinstance(result, list), "Not list of dictionaries type returned"
 
+        self.projectModel.gToken = gToken
+
     def test_RepositoriesPositive(self):
+        gToken = self.projectModel.gToken
+        self.projectModel.gToken = "123"
+
         result = self.projectModel.Repositories()
 
         assert len(result) == 0, f'Expected: `0`, actual: `{len(result)}`'
+
+        self.projectModel.gToken = gToken
 
     def test_RepositoriesNegative(self):
         gToken = self.projectModel.gToken
