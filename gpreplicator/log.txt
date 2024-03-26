@@ -1,0 +1,1111 @@
+GPReplicator.py     L:644  DEBUG   [2024-03-01 12:18:30,028] =--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--=
+GPReplicator.py     L:645  DEBUG   [2024-03-01 12:18:30,028] GPReplicator started: 2024-03-01 12:18:30
+GPReplicator.py     L:159  DEBUG   [2024-03-01 12:18:30,041] Environment variable `GITEE_TOKEN` is empty. So you can use the variable `gToken` or the key `--gitee-token` to define it.
+GPReplicator.py     L:175  DEBUG   [2024-03-01 12:18:30,041] Environment variable `GITEE_OWNER` is empty. So you can use the variable `gOwner` or the key `--gitee-owner` to define it.
+GPReplicator.py     L:191  DEBUG   [2024-03-01 12:18:30,042] Environment variable `GITEE_PROJECT` is empty. So you can use the variable `gProject` or the key `--gitee-project` to define it.
+GPReplicator.py     L:710  DEBUG   [2024-03-01 12:18:30,043] All GPReplicator operations are finished success (summary code is 0).
+GPReplicator.py     L:715  DEBUG   [2024-03-01 12:18:30,043] GPReplicator work duration: 0:00:00.015388
+GPReplicator.py     L:716  DEBUG   [2024-03-01 12:18:30,043] GPReplicator work finished: 2024-03-01 12:18:30
+GPReplicator.py     L:644  DEBUG   [2024-03-01 12:25:49,300] =--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--=
+GPReplicator.py     L:645  DEBUG   [2024-03-01 12:25:49,300] GPReplicator started: 2024-03-01 12:25:49
+GPReplicator.py     L:159  DEBUG   [2024-03-01 12:25:49,315] Environment variable `GITEE_TOKEN` is empty. So you can use the variable `gToken` or the key `--gitee-token` to define it.
+GPReplicator.py     L:175  DEBUG   [2024-03-01 12:25:49,316] Environment variable `GITEE_OWNER` is empty. So you can use the variable `gOwner` or the key `--gitee-owner` to define it.
+GPReplicator.py     L:191  DEBUG   [2024-03-01 12:25:49,316] Environment variable `GITEE_PROJECT` is empty. So you can use the variable `gProject` or the key `--gitee-project` to define it.
+GPReplicator.py     L:329  DEBUG   [2024-03-01 12:25:49,317] Requesting all project files. Wait, please...
+GPReplicator.py     L:349  INFO    [2024-03-01 12:25:51,644] List of all project files [46]:
+. PriceGenerator repository
+|-> .travis.yml
+|-> CHANGELOG.md
+|-> CHANGELOG_RU.md
+|-> LICENSE
+|-> PDocBuilder.py
+|-> README.md
+|-> README_RU.md
+|-> _config.yml
+|-> docs/
+|-> docs/index.html
+|-> docs/pricegenerator.html
+|-> docs/pricegenerator/
+|-> docs/pricegenerator/PriceGenerator.html
+|-> docs/pricegenerator/UniLogger.html
+|-> docs/search.js
+|-> media/
+|-> media/index.html
+|-> media/index.html.md
+|-> media/index.html.png
+|-> media/index_custom.html
+|-> media/index_custom.html.md
+|-> media/index_custom.html.png
+|-> media/index_google.html
+|-> media/index_google.html.png
+|-> media/index_with_trends.html.png
+|-> media/logo-pricegenerator-128x128px.png
+|-> media/logo-pricegenerator-256x256px.png
+|-> media/logo-pricegenerator-32x32px.png
+|-> media/logo-pricegenerator-420x610px.png
+|-> media/logo-pricegenerator-64x64px.png
+|-> media/long-series-example-with-realistic-volumes.png
+|-> media/marked_dark.png
+|-> media/test.csv
+|-> pricegenerator/
+|-> pricegenerator/PriceGenerator.py
+|-> pricegenerator/UniLogger.py
+|-> pricegenerator/__init__.py
+|-> pricegenerator/__main__.py
+|-> pricegenerator/google_template_example.j2
+|-> requirements.txt
+|-> setup.cfg
+|-> setup.py
+|-> tests/
+|-> tests/AFLT_day.csv
+|-> tests/test_PriceGenerator.py
+|-> tests/test_template.j2
+GPReplicator.py     L:710  DEBUG   [2024-03-01 12:25:51,645] All GPReplicator operations are finished success (summary code is 0).
+GPReplicator.py     L:715  DEBUG   [2024-03-01 12:25:51,645] GPReplicator work duration: 0:00:02.345706
+GPReplicator.py     L:716  DEBUG   [2024-03-01 12:25:51,646] GPReplicator work finished: 2024-03-01 12:25:51
+GPReplicator.py     L:644  DEBUG   [2024-03-01 12:28:50,099] =--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--=
+GPReplicator.py     L:645  DEBUG   [2024-03-01 12:28:50,099] GPReplicator started: 2024-03-01 12:28:50
+GPReplicator.py     L:159  DEBUG   [2024-03-01 12:28:50,114] Environment variable `GITEE_TOKEN` is empty. So you can use the variable `gToken` or the key `--gitee-token` to define it.
+GPReplicator.py     L:175  DEBUG   [2024-03-01 12:28:50,114] Environment variable `GITEE_OWNER` is empty. So you can use the variable `gOwner` or the key `--gitee-owner` to define it.
+GPReplicator.py     L:191  DEBUG   [2024-03-01 12:28:50,115] Environment variable `GITEE_PROJECT` is empty. So you can use the variable `gProject` or the key `--gitee-project` to define it.
+GPReplicator.py     L:329  DEBUG   [2024-03-01 12:28:50,115] Requesting all project files. Wait, please...
+GPReplicator.py     L:349  INFO    [2024-03-01 12:28:51,792] List of all project files [46]:
+. PriceGenerator repository
+|-> .travis.yml
+|-> CHANGELOG.md
+|-> CHANGELOG_RU.md
+|-> LICENSE
+|-> PDocBuilder.py
+|-> README.md
+|-> README_RU.md
+|-> _config.yml
+|-> docs/
+|-> docs/index.html
+|-> docs/pricegenerator.html
+|-> docs/pricegenerator/
+|-> docs/pricegenerator/PriceGenerator.html
+|-> docs/pricegenerator/UniLogger.html
+|-> docs/search.js
+|-> media/
+|-> media/index.html
+|-> media/index.html.md
+|-> media/index.html.png
+|-> media/index_custom.html
+|-> media/index_custom.html.md
+|-> media/index_custom.html.png
+|-> media/index_google.html
+|-> media/index_google.html.png
+|-> media/index_with_trends.html.png
+|-> media/logo-pricegenerator-128x128px.png
+|-> media/logo-pricegenerator-256x256px.png
+|-> media/logo-pricegenerator-32x32px.png
+|-> media/logo-pricegenerator-420x610px.png
+|-> media/logo-pricegenerator-64x64px.png
+|-> media/long-series-example-with-realistic-volumes.png
+|-> media/marked_dark.png
+|-> media/test.csv
+|-> pricegenerator/
+|-> pricegenerator/PriceGenerator.py
+|-> pricegenerator/UniLogger.py
+|-> pricegenerator/__init__.py
+|-> pricegenerator/__main__.py
+|-> pricegenerator/google_template_example.j2
+|-> requirements.txt
+|-> setup.cfg
+|-> setup.py
+|-> tests/
+|-> tests/AFLT_day.csv
+|-> tests/test_PriceGenerator.py
+|-> tests/test_template.j2
+GPReplicator.py     L:710  DEBUG   [2024-03-01 12:28:51,793] All GPReplicator operations are finished success (summary code is 0).
+GPReplicator.py     L:715  DEBUG   [2024-03-01 12:28:51,793] GPReplicator work duration: 0:00:01.694504
+GPReplicator.py     L:716  DEBUG   [2024-03-01 12:28:51,794] GPReplicator work finished: 2024-03-01 12:28:51
+GPReplicator.py     L:644  DEBUG   [2024-03-01 12:29:32,624] =--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--=
+GPReplicator.py     L:645  DEBUG   [2024-03-01 12:29:32,625] GPReplicator started: 2024-03-01 12:29:32
+GPReplicator.py     L:159  DEBUG   [2024-03-01 12:29:32,634] Environment variable `GITEE_TOKEN` is empty. So you can use the variable `gToken` or the key `--gitee-token` to define it.
+GPReplicator.py     L:175  DEBUG   [2024-03-01 12:29:32,635] Environment variable `GITEE_OWNER` is empty. So you can use the variable `gOwner` or the key `--gitee-owner` to define it.
+GPReplicator.py     L:191  DEBUG   [2024-03-01 12:29:32,635] Environment variable `GITEE_PROJECT` is empty. So you can use the variable `gProject` or the key `--gitee-project` to define it.
+GPReplicator.py     L:653  WARNING [2024-03-01 12:29:32,636] More debug mode is enabled! See network requests, responses and its headers in the full log or run GPReplicator with the `--verbosity 10` key to show theres in console.
+GPReplicator.py     L:329  DEBUG   [2024-03-01 12:29:32,636] Requesting all project files. Wait, please...
+GPReplicator.py     L:239  DEBUG   [2024-03-01 12:29:32,637] Request parameters:
+GPReplicator.py     L:240  DEBUG   [2024-03-01 12:29:32,637]     - REST API URL: https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/trees/master?recursive=1
+GPReplicator.py     L:241  DEBUG   [2024-03-01 12:29:32,637]     - request type: GET
+GPReplicator.py     L:242  DEBUG   [2024-03-01 12:29:32,638]     - headers:
+{'Content-Type': 'application/x-www-form-urlencoded', 'charset': 'UTF-8', 'accept': 'application/json', 'x-app-name': '3LogicGroup.GPReplicator'}
+GPReplicator.py     L:243  DEBUG   [2024-03-01 12:29:32,638]     - raw request body:
+access_token=4c41f6fe4e4fdea3d68681c0b290d540
+GPReplicator.py     L:259  DEBUG   [2024-03-01 12:29:49,712] Response:
+GPReplicator.py     L:260  DEBUG   [2024-03-01 12:29:49,712]     - status code: 200
+GPReplicator.py     L:261  DEBUG   [2024-03-01 12:29:49,712]     - reason: OK
+GPReplicator.py     L:262  DEBUG   [2024-03-01 12:29:49,713]     - body length: 11250
+GPReplicator.py     L:263  DEBUG   [2024-03-01 12:29:49,713]     - headers:
+{'Server': 'nginx', 'Date': 'Fri, 01 Mar 2024 09:29:49 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=20', 'Vary': 'Accept-Encoding, Accept-Encoding, Accept-Encoding, Origin', 'ETag': 'W/"b4926aeee58467a731a98a0421adeee8"', 'Cache-Control': 'max-age=0, private, must-revalidate', 'X-Request-Id': 'ad3e543df6941de5f9de47dda0617bfd', 'X-Runtime': '0.060197', 'X-Frame-Options': 'SAMEORIGIN, SAMEORIGIN, SAMEORIGIN', 'Content-Security-Policy': "frame-ancestors 'self' https://*.gitee.com", 'Content-Encoding': 'gzip'}
+GPReplicator.py     L:213  DEBUG   [2024-03-01 12:29:49,714] JSON-data of raw response body:
+{
+    "sha": "master",
+    "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/trees/master",
+    "tree": [
+        {
+            "path": ".travis.yml",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "602c2821e559d436bfdcb8fcc1b8af2103e70cd0",
+            "size": 1566,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/602c2821e559d436bfdcb8fcc1b8af2103e70cd0"
+        },
+        {
+            "path": "CHANGELOG.md",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "cefca746c12d6cccdabea10c6a8667a21d29d1bb",
+            "size": 9801,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/cefca746c12d6cccdabea10c6a8667a21d29d1bb"
+        },
+        {
+            "path": "CHANGELOG_RU.md",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "18e8da8e91710e99ae568e39331d4d442e61f3bd",
+            "size": 16412,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/18e8da8e91710e99ae568e39331d4d442e61f3bd"
+        },
+        {
+            "path": "LICENSE",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "2bb9ad240fa04c8cf706a4901c4807878e90c2dc",
+            "size": 10172,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/2bb9ad240fa04c8cf706a4901c4807878e90c2dc"
+        },
+        {
+            "path": "PDocBuilder.py",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "d6522ed875a8adaf34c00c54dfbb9455c21697f5",
+            "size": 1029,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/d6522ed875a8adaf34c00c54dfbb9455c21697f5"
+        },
+        {
+            "path": "README.md",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "101fa7b534cac01e3935154e182e0c85a2303f36",
+            "size": 33665,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/101fa7b534cac01e3935154e182e0c85a2303f36"
+        },
+        {
+            "path": "README_RU.md",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "d989d35552b5d5feaa93939a79c90cd85f37af7c",
+            "size": 49317,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/d989d35552b5d5feaa93939a79c90cd85f37af7c"
+        },
+        {
+            "path": "_config.yml",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "277f1f2c510d1d7ef67d0278b7b2ca730f64c1e3",
+            "size": 27,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/277f1f2c510d1d7ef67d0278b7b2ca730f64c1e3"
+        },
+        {
+            "path": "docs",
+            "mode": "40000",
+            "type": "tree",
+            "sha": "ff0485f1c9f54d47fdcf13c98075e49e2bd20f3b",
+            "size": 0,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/trees/ff0485f1c9f54d47fdcf13c98075e49e2bd20f3b"
+        },
+        {
+            "path": "docs/index.html",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "9ff147a00071b7cf0d38c080a58eda946ad51979",
+            "size": 145,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/9ff147a00071b7cf0d38c080a58eda946ad51979"
+        },
+        {
+            "path": "docs/pricegenerator.html",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "d1318a3e2230dfdd879b833feb92679e8d22f50c",
+            "size": 34623,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/d1318a3e2230dfdd879b833feb92679e8d22f50c"
+        },
+        {
+            "path": "docs/pricegenerator",
+            "mode": "40000",
+            "type": "tree",
+            "sha": "b044b6aecac68dd0f5daee923923097dfb87c7fa",
+            "size": 0,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/trees/b044b6aecac68dd0f5daee923923097dfb87c7fa"
+        },
+        {
+            "path": "docs/pricegenerator/PriceGenerator.html",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "ca05ecdf6e43d4b2ef4b122df05668dd521a0a53",
+            "size": 83193,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/ca05ecdf6e43d4b2ef4b122df05668dd521a0a53"
+        },
+        {
+            "path": "docs/pricegenerator/UniLogger.html",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "4df29c5d2af45b47a187a2e06ed2b376acb28820",
+            "size": 45600,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/4df29c5d2af45b47a187a2e06ed2b376acb28820"
+        },
+        {
+            "path": "docs/search.js",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "aa82441bfd6840a1376a996f767b2c4d7ff995de",
+            "size": 60779,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/aa82441bfd6840a1376a996f767b2c4d7ff995de"
+        },
+        {
+            "path": "media",
+            "mode": "40000",
+            "type": "tree",
+            "sha": "81c58997a8ceb7d49d447f7036b146b96d05efbe",
+            "size": 0,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/trees/81c58997a8ceb7d49d447f7036b146b96d05efbe"
+        },
+        {
+            "path": "media/index.html",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "a723b48592ffa06ad1e28b54a90b7338cb5a06fe",
+            "size": 38496,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/a723b48592ffa06ad1e28b54a90b7338cb5a06fe"
+        },
+        {
+            "path": "media/index.html.md",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "3b8235e55154d7060c18ceb6b4c8c53779519935",
+            "size": 1334,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/3b8235e55154d7060c18ceb6b4c8c53779519935"
+        },
+        {
+            "path": "media/index.html.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "41d281aa9f1f7299da2968e51aabfa7b7244c61b",
+            "size": 141511,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/41d281aa9f1f7299da2968e51aabfa7b7244c61b"
+        },
+        {
+            "path": "media/index_custom.html",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "c081f26b6dfdb8314ec175cf9a7c3dd226e8ac8d",
+            "size": 45479,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/c081f26b6dfdb8314ec175cf9a7c3dd226e8ac8d"
+        },
+        {
+            "path": "media/index_custom.html.md",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "29ff2128758a8f604f56a56b43d2f8ab0cf3ca8e",
+            "size": 1353,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/29ff2128758a8f604f56a56b43d2f8ab0cf3ca8e"
+        },
+        {
+            "path": "media/index_custom.html.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "12bf32f636d47cfcc585820440c056efcd0bb7f1",
+            "size": 217215,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/12bf32f636d47cfcc585820440c056efcd0bb7f1"
+        },
+        {
+            "path": "media/index_google.html",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "ce9d3198ed6f0c5dcd9ffb315fae005033256ce8",
+            "size": 11982,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/ce9d3198ed6f0c5dcd9ffb315fae005033256ce8"
+        },
+        {
+            "path": "media/index_google.html.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "fbdd1e7c293d330ec1588020136773f22ec581a5",
+            "size": 72875,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/fbdd1e7c293d330ec1588020136773f22ec581a5"
+        },
+        {
+            "path": "media/index_with_trends.html.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "aa7a7afa2630a657af605ea910cb157987bbfdde",
+            "size": 106476,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/aa7a7afa2630a657af605ea910cb157987bbfdde"
+        },
+        {
+            "path": "media/logo-pricegenerator-128x128px.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "1aabd973519a71e654b626aecc1140dd2a666880",
+            "size": 5827,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/1aabd973519a71e654b626aecc1140dd2a666880"
+        },
+        {
+            "path": "media/logo-pricegenerator-256x256px.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "7ed434472791bf360c515dc438ad8ebfe163da8e",
+            "size": 5839,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/7ed434472791bf360c515dc438ad8ebfe163da8e"
+        },
+        {
+            "path": "media/logo-pricegenerator-32x32px.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "37eb84bdf4f45a7ec50d82d7d7acc9281b043706",
+            "size": 1411,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/37eb84bdf4f45a7ec50d82d7d7acc9281b043706"
+        },
+        {
+            "path": "media/logo-pricegenerator-420x610px.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "632acbad27b72d9610f95acf6ac52b1110bebfc5",
+            "size": 22478,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/632acbad27b72d9610f95acf6ac52b1110bebfc5"
+        },
+        {
+            "path": "media/logo-pricegenerator-64x64px.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "4b5afbd17eb7b11b108e521cef560b635f4b71d5",
+            "size": 2849,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/4b5afbd17eb7b11b108e521cef560b635f4b71d5"
+        },
+        {
+            "path": "media/long-series-example-with-realistic-volumes.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "77cdff4fb5e98175ce3b4a91f286d2c1490d0f28",
+            "size": 273460,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/77cdff4fb5e98175ce3b4a91f286d2c1490d0f28"
+        },
+        {
+            "path": "media/marked_dark.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "685b9fec5a0b26c1804184065d53a6265993f1c1",
+            "size": 179685,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/685b9fec5a0b26c1804184065d53a6265993f1c1"
+        },
+        {
+            "path": "media/test.csv",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "0c3a89f667e38a52a4c92400d8820a85b48f98f5",
+            "size": 5521,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/0c3a89f667e38a52a4c92400d8820a85b48f98f5"
+        },
+        {
+            "path": "pricegenerator",
+            "mode": "40000",
+            "type": "tree",
+            "sha": "58ffeb22e7768dab6751be07449dd564d935001a",
+            "size": 0,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/trees/58ffeb22e7768dab6751be07449dd564d935001a"
+        },
+        {
+            "path": "pricegenerator/PriceGenerator.py",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "32ba857e3674da07b61dd03364922adc530ff527",
+            "size": 84017,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/32ba857e3674da07b61dd03364922adc530ff527"
+        },
+        {
+            "path": "pricegenerator/UniLogger.py",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "2730c274b2d33bdb620f5c53323b38526b33e021",
+            "size": 3820,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/2730c274b2d33bdb620f5c53323b38526b33e021"
+        },
+        {
+            "path": "pricegenerator/__init__.py",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+            "size": 0,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        {
+            "path": "pricegenerator/__main__.py",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "221d6d53af73a3bb8e42942721384f717435cba4",
+            "size": 86,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/221d6d53af73a3bb8e42942721384f717435cba4"
+        },
+        {
+            "path": "pricegenerator/google_template_example.j2",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "596e53adafb879f3b2748c79d9d35152d4c416e7",
+            "size": 4565,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/596e53adafb879f3b2748c79d9d35152d4c416e7"
+        },
+        {
+            "path": "requirements.txt",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "057e6382ef1052ac56e5e9184fdd4ef66bef2593",
+            "size": 761,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/057e6382ef1052ac56e5e9184fdd4ef66bef2593"
+        },
+        {
+            "path": "setup.cfg",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "224a77957f5db48dfa25c8bb4a35f535202da203",
+            "size": 39,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/224a77957f5db48dfa25c8bb4a35f535202da203"
+        },
+        {
+            "path": "setup.py",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "ec6b5d9e59e24101614870ea0b65dee2a5ed8ca0",
+            "size": 4245,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/ec6b5d9e59e24101614870ea0b65dee2a5ed8ca0"
+        },
+        {
+            "path": "tests",
+            "mode": "40000",
+            "type": "tree",
+            "sha": "f92b611fa5405c79bf2be975ae3a9c61508a1dd7",
+            "size": 0,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/trees/f92b611fa5405c79bf2be975ae3a9c61508a1dd7"
+        },
+        {
+            "path": "tests/AFLT_day.csv",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "b1f322fa765184569156aedbf292aa6e2e9e8449",
+            "size": 134098,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/b1f322fa765184569156aedbf292aa6e2e9e8449"
+        },
+        {
+            "path": "tests/test_PriceGenerator.py",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "34ee4af5b1c6f55dc216faba7c38114d0bc54311",
+            "size": 19415,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/34ee4af5b1c6f55dc216faba7c38114d0bc54311"
+        },
+        {
+            "path": "tests/test_template.j2",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "15e6fd74123d6c3f2ebd54d5aca07b2e77d6e591",
+            "size": 3982,
+            "url": "https://gitee.com/api/v5/repos/tim55667757/PriceGenerator/git/blobs/15e6fd74123d6c3f2ebd54d5aca07b2e77d6e591"
+        }
+    ],
+    "truncated": false
+}
+GPReplicator.py     L:339  DEBUG   [2024-03-01 12:29:49,719] Project files data successfully received. Records: [46]
+GPReplicator.py     L:349  INFO    [2024-03-01 12:29:49,720] List of all project files [46]:
+. PriceGenerator repository
+|-> .travis.yml
+|-> CHANGELOG.md
+|-> CHANGELOG_RU.md
+|-> LICENSE
+|-> PDocBuilder.py
+|-> README.md
+|-> README_RU.md
+|-> _config.yml
+|-> docs/
+|-> docs/index.html
+|-> docs/pricegenerator.html
+|-> docs/pricegenerator/
+|-> docs/pricegenerator/PriceGenerator.html
+|-> docs/pricegenerator/UniLogger.html
+|-> docs/search.js
+|-> media/
+|-> media/index.html
+|-> media/index.html.md
+|-> media/index.html.png
+|-> media/index_custom.html
+|-> media/index_custom.html.md
+|-> media/index_custom.html.png
+|-> media/index_google.html
+|-> media/index_google.html.png
+|-> media/index_with_trends.html.png
+|-> media/logo-pricegenerator-128x128px.png
+|-> media/logo-pricegenerator-256x256px.png
+|-> media/logo-pricegenerator-32x32px.png
+|-> media/logo-pricegenerator-420x610px.png
+|-> media/logo-pricegenerator-64x64px.png
+|-> media/long-series-example-with-realistic-volumes.png
+|-> media/marked_dark.png
+|-> media/test.csv
+|-> pricegenerator/
+|-> pricegenerator/PriceGenerator.py
+|-> pricegenerator/UniLogger.py
+|-> pricegenerator/__init__.py
+|-> pricegenerator/__main__.py
+|-> pricegenerator/google_template_example.j2
+|-> requirements.txt
+|-> setup.cfg
+|-> setup.py
+|-> tests/
+|-> tests/AFLT_day.csv
+|-> tests/test_PriceGenerator.py
+|-> tests/test_template.j2
+GPReplicator.py     L:710  DEBUG   [2024-03-01 12:29:49,720] All GPReplicator operations are finished success (summary code is 0).
+GPReplicator.py     L:715  DEBUG   [2024-03-01 12:29:49,721] GPReplicator work duration: 0:00:17.096900
+GPReplicator.py     L:716  DEBUG   [2024-03-01 12:29:49,722] GPReplicator work finished: 2024-03-01 12:29:49
+GPReplicator.py     L:644  DEBUG   [2024-03-01 12:34:18,481] =--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--=
+GPReplicator.py     L:645  DEBUG   [2024-03-01 12:34:18,482] GPReplicator started: 2024-03-01 12:34:18
+GPReplicator.py     L:159  DEBUG   [2024-03-01 12:34:18,500] Environment variable `GITEE_TOKEN` is empty. So you can use the variable `gToken` or the key `--gitee-token` to define it.
+GPReplicator.py     L:175  DEBUG   [2024-03-01 12:34:18,501] Environment variable `GITEE_OWNER` is empty. So you can use the variable `gOwner` or the key `--gitee-owner` to define it.
+GPReplicator.py     L:191  DEBUG   [2024-03-01 12:34:18,501] Environment variable `GITEE_PROJECT` is empty. So you can use the variable `gProject` or the key `--gitee-project` to define it.
+GPReplicator.py     L:369  DEBUG   [2024-03-01 12:34:18,501] Requesting all project issues. Wait, please...
+GPReplicator.py     L:387  INFO    [2024-03-01 12:34:35,488] List of all project issues [3]:
+State: [open] Type: [任务] Created: [2023-12-27] Title: [Another Issue 2]
+State: [open] Type: [任务] Created: [2023-12-27] Title: [Test Issue 1]
+State: [rejected] Type: [任务] Created: [2024-02-27] Title: [test closed issue]
+GPReplicator.py     L:710  DEBUG   [2024-03-01 12:34:35,488] All GPReplicator operations are finished success (summary code is 0).
+GPReplicator.py     L:715  DEBUG   [2024-03-01 12:34:35,488] GPReplicator work duration: 0:00:17.007616
+GPReplicator.py     L:716  DEBUG   [2024-03-01 12:34:35,490] GPReplicator work finished: 2024-03-01 12:34:35
+GPReplicator.py     L:644  DEBUG   [2024-03-01 12:36:08,319] =--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--=
+GPReplicator.py     L:645  DEBUG   [2024-03-01 12:36:08,320] GPReplicator started: 2024-03-01 12:36:08
+GPReplicator.py     L:159  DEBUG   [2024-03-01 12:36:08,337] Environment variable `GITEE_TOKEN` is empty. So you can use the variable `gToken` or the key `--gitee-token` to define it.
+GPReplicator.py     L:175  DEBUG   [2024-03-01 12:36:08,337] Environment variable `GITEE_OWNER` is empty. So you can use the variable `gOwner` or the key `--gitee-owner` to define it.
+GPReplicator.py     L:191  DEBUG   [2024-03-01 12:36:08,338] Environment variable `GITEE_PROJECT` is empty. So you can use the variable `gProject` or the key `--gitee-project` to define it.
+GPReplicator.py     L:369  DEBUG   [2024-03-01 12:36:08,338] Requesting all project issues. Wait, please...
+GPReplicator.py     L:292  DEBUG   [2024-03-01 12:36:09,670]     - not oK, status code: [500], response body: {"message":"500 Internal Server Error"}
+GPReplicator.py     L:301  DEBUG   [2024-03-01 12:36:09,671] Retry: [1]. Wait 5 sec. and try again...
+GPReplicator.py     L:292  DEBUG   [2024-03-01 12:36:15,713]     - not oK, status code: [500], response body: {"message":"500 Internal Server Error"}
+GPReplicator.py     L:301  DEBUG   [2024-03-01 12:36:15,714] Retry: [2]. Wait 5 sec. and try again...
+GPReplicator.py     L:292  DEBUG   [2024-03-01 12:36:21,790]     - not oK, status code: [500], response body: {"message":"500 Internal Server Error"}
+GPReplicator.py     L:301  DEBUG   [2024-03-01 12:36:21,791] Retry: [3]. Wait 5 sec. and try again...
+GPReplicator.py     L:292  DEBUG   [2024-03-01 12:36:27,984]     - not oK, status code: [500], response body: {"message":"500 Internal Server Error"}
+GPReplicator.py     L:308  ERROR   [2024-03-01 12:36:27,984] Server returns not `oK` status! See full debug log.
+GPReplicator.py     L:309  ERROR   [2024-03-01 12:36:27,985]     - not oK, status code: [500], response body: {"message":"500 Internal Server Error"}
+GPReplicator.py     L:392  INFO    [2024-03-01 12:36:27,985] There are no project issues
+GPReplicator.py     L:710  DEBUG   [2024-03-01 12:36:27,986] All GPReplicator operations are finished success (summary code is 0).
+GPReplicator.py     L:715  DEBUG   [2024-03-01 12:36:27,986] GPReplicator work duration: 0:00:19.667259
+GPReplicator.py     L:716  DEBUG   [2024-03-01 12:36:27,987] GPReplicator work finished: 2024-03-01 12:36:27
+GPReplicator.py     L:644  DEBUG   [2024-03-01 12:37:36,179] =--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--=
+GPReplicator.py     L:645  DEBUG   [2024-03-01 12:37:36,179] GPReplicator started: 2024-03-01 12:37:36
+GPReplicator.py     L:159  DEBUG   [2024-03-01 12:37:36,190] Environment variable `GITEE_TOKEN` is empty. So you can use the variable `gToken` or the key `--gitee-token` to define it.
+GPReplicator.py     L:175  DEBUG   [2024-03-01 12:37:36,191] Environment variable `GITEE_OWNER` is empty. So you can use the variable `gOwner` or the key `--gitee-owner` to define it.
+GPReplicator.py     L:191  DEBUG   [2024-03-01 12:37:36,191] Environment variable `GITEE_PROJECT` is empty. So you can use the variable `gProject` or the key `--gitee-project` to define it.
+GPReplicator.py     L:653  WARNING [2024-03-01 12:37:36,192] More debug mode is enabled! See network requests, responses and its headers in the full log or run GPReplicator with the `--verbosity 10` key to show theres in console.
+GPReplicator.py     L:369  DEBUG   [2024-03-01 12:37:36,192] Requesting all project issues. Wait, please...
+GPReplicator.py     L:239  DEBUG   [2024-03-01 12:37:36,193] Request parameters:
+GPReplicator.py     L:240  DEBUG   [2024-03-01 12:37:36,193]     - REST API URL: https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/issues?state=all
+GPReplicator.py     L:241  DEBUG   [2024-03-01 12:37:36,193]     - request type: GET
+GPReplicator.py     L:242  DEBUG   [2024-03-01 12:37:36,194]     - headers:
+{'Content-Type': 'application/x-www-form-urlencoded', 'charset': 'UTF-8', 'accept': 'application/json', 'x-app-name': '3LogicGroup.GPReplicator'}
+GPReplicator.py     L:243  DEBUG   [2024-03-01 12:37:36,194]     - raw request body:
+None
+GPReplicator.py     L:259  DEBUG   [2024-03-01 12:37:37,319] Response:
+GPReplicator.py     L:260  DEBUG   [2024-03-01 12:37:37,320]     - status code: 500
+GPReplicator.py     L:261  DEBUG   [2024-03-01 12:37:37,320]     - reason: Internal Server Error
+GPReplicator.py     L:262  DEBUG   [2024-03-01 12:37:37,322]     - body length: 39
+GPReplicator.py     L:263  DEBUG   [2024-03-01 12:37:37,322]     - headers:
+{'server': 'nginx', 'date': 'Fri, 01 Mar 2024 09:37:37 GMT', 'content-type': 'application/json', 'content-length': '39', 'cache-control': 'no-cache', 'x-ratelimit-limit': '60', 'x-ratelimit-remaining': '55', 'x-request-id': '656d42b71038a94421d7ed2b4cc320f7', 'x-runtime': '0.535009', 'vary': 'Origin', 'x-frame-options': 'SAMEORIGIN', 'connection': 'close'}
+GPReplicator.py     L:270  DEBUG   [2024-03-01 12:37:37,323]     - X-RateLimit-Limit for unauthorized user and current ip-address: 60
+GPReplicator.py     L:271  DEBUG   [2024-03-01 12:37:37,323]     - X-RateLimit-Remaining for unauthorized user and current ip-address: 55
+GPReplicator.py     L:292  DEBUG   [2024-03-01 12:37:37,324]     - not oK, status code: [500], response body: {"message":"500 Internal Server Error"}
+GPReplicator.py     L:301  DEBUG   [2024-03-01 12:37:37,324] Retry: [1]. Wait 5 sec. and try again...
+GPReplicator.py     L:259  DEBUG   [2024-03-01 12:37:43,426] Response:
+GPReplicator.py     L:260  DEBUG   [2024-03-01 12:37:43,426]     - status code: 500
+GPReplicator.py     L:261  DEBUG   [2024-03-01 12:37:43,427]     - reason: Internal Server Error
+GPReplicator.py     L:262  DEBUG   [2024-03-01 12:37:43,427]     - body length: 39
+GPReplicator.py     L:263  DEBUG   [2024-03-01 12:37:43,428]     - headers:
+{'server': 'nginx', 'date': 'Fri, 01 Mar 2024 09:37:43 GMT', 'content-type': 'application/json', 'content-length': '39', 'cache-control': 'no-cache', 'x-ratelimit-limit': '60', 'x-ratelimit-remaining': '54', 'x-request-id': '9754f87097dafaaa84cb09bf956d8b26', 'x-runtime': '0.557821', 'vary': 'Origin', 'x-frame-options': 'SAMEORIGIN', 'connection': 'close'}
+GPReplicator.py     L:270  DEBUG   [2024-03-01 12:37:43,428]     - X-RateLimit-Limit for unauthorized user and current ip-address: 60
+GPReplicator.py     L:271  DEBUG   [2024-03-01 12:37:43,429]     - X-RateLimit-Remaining for unauthorized user and current ip-address: 54
+GPReplicator.py     L:292  DEBUG   [2024-03-01 12:37:43,429]     - not oK, status code: [500], response body: {"message":"500 Internal Server Error"}
+GPReplicator.py     L:301  DEBUG   [2024-03-01 12:37:43,429] Retry: [2]. Wait 5 sec. and try again...
+GPReplicator.py     L:259  DEBUG   [2024-03-01 12:37:49,494] Response:
+GPReplicator.py     L:260  DEBUG   [2024-03-01 12:37:49,495]     - status code: 500
+GPReplicator.py     L:261  DEBUG   [2024-03-01 12:37:49,497]     - reason: Internal Server Error
+GPReplicator.py     L:262  DEBUG   [2024-03-01 12:37:49,497]     - body length: 39
+GPReplicator.py     L:263  DEBUG   [2024-03-01 12:37:49,498]     - headers:
+{'server': 'nginx', 'date': 'Fri, 01 Mar 2024 09:37:49 GMT', 'content-type': 'application/json', 'content-length': '39', 'cache-control': 'no-cache', 'x-ratelimit-limit': '60', 'x-ratelimit-remaining': '53', 'x-request-id': '9d0c551eaa40c7e9d45fff33dfbd5ccc', 'x-runtime': '0.519368', 'vary': 'Origin', 'x-frame-options': 'SAMEORIGIN', 'connection': 'close'}
+GPReplicator.py     L:270  DEBUG   [2024-03-01 12:37:49,498]     - X-RateLimit-Limit for unauthorized user and current ip-address: 60
+GPReplicator.py     L:271  DEBUG   [2024-03-01 12:37:49,498]     - X-RateLimit-Remaining for unauthorized user and current ip-address: 53
+GPReplicator.py     L:292  DEBUG   [2024-03-01 12:37:49,499]     - not oK, status code: [500], response body: {"message":"500 Internal Server Error"}
+GPReplicator.py     L:301  DEBUG   [2024-03-01 12:37:49,499] Retry: [3]. Wait 5 sec. and try again...
+GPReplicator.py     L:259  DEBUG   [2024-03-01 12:37:55,469] Response:
+GPReplicator.py     L:260  DEBUG   [2024-03-01 12:37:55,469]     - status code: 500
+GPReplicator.py     L:261  DEBUG   [2024-03-01 12:37:55,469]     - reason: Internal Server Error
+GPReplicator.py     L:262  DEBUG   [2024-03-01 12:37:55,470]     - body length: 39
+GPReplicator.py     L:263  DEBUG   [2024-03-01 12:37:55,471]     - headers:
+{'server': 'nginx', 'date': 'Fri, 01 Mar 2024 09:37:55 GMT', 'content-type': 'application/json', 'content-length': '39', 'cache-control': 'no-cache', 'x-ratelimit-limit': '60', 'x-ratelimit-remaining': '52', 'x-request-id': '633ee548d29bf57d0f6d42ca17b8ba73', 'x-runtime': '0.429297', 'vary': 'Origin', 'x-frame-options': 'SAMEORIGIN', 'connection': 'close'}
+GPReplicator.py     L:270  DEBUG   [2024-03-01 12:37:55,471]     - X-RateLimit-Limit for unauthorized user and current ip-address: 60
+GPReplicator.py     L:271  DEBUG   [2024-03-01 12:37:55,472]     - X-RateLimit-Remaining for unauthorized user and current ip-address: 52
+GPReplicator.py     L:292  DEBUG   [2024-03-01 12:37:55,472]     - not oK, status code: [500], response body: {"message":"500 Internal Server Error"}
+GPReplicator.py     L:308  ERROR   [2024-03-01 12:37:55,472] Server returns not `oK` status! See full debug log.
+GPReplicator.py     L:309  ERROR   [2024-03-01 12:37:55,473]     - not oK, status code: [500], response body: {"message":"500 Internal Server Error"}
+GPReplicator.py     L:392  INFO    [2024-03-01 12:37:55,474] There are no project issues
+GPReplicator.py     L:710  DEBUG   [2024-03-01 12:37:55,474] All GPReplicator operations are finished success (summary code is 0).
+GPReplicator.py     L:715  DEBUG   [2024-03-01 12:37:55,475] GPReplicator work duration: 0:00:19.294995
+GPReplicator.py     L:716  DEBUG   [2024-03-01 12:37:55,476] GPReplicator work finished: 2024-03-01 12:37:55
+GPReplicator.py     L:644  DEBUG   [2024-03-01 12:40:10,127] =--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--==--=
+GPReplicator.py     L:645  DEBUG   [2024-03-01 12:40:10,128] GPReplicator started: 2024-03-01 12:40:10
+GPReplicator.py     L:159  DEBUG   [2024-03-01 12:40:10,142] Environment variable `GITEE_TOKEN` is empty. So you can use the variable `gToken` or the key `--gitee-token` to define it.
+GPReplicator.py     L:175  DEBUG   [2024-03-01 12:40:10,143] Environment variable `GITEE_OWNER` is empty. So you can use the variable `gOwner` or the key `--gitee-owner` to define it.
+GPReplicator.py     L:191  DEBUG   [2024-03-01 12:40:10,144] Environment variable `GITEE_PROJECT` is empty. So you can use the variable `gProject` or the key `--gitee-project` to define it.
+GPReplicator.py     L:653  WARNING [2024-03-01 12:40:10,145] More debug mode is enabled! See network requests, responses and its headers in the full log or run GPReplicator with the `--verbosity 10` key to show theres in console.
+GPReplicator.py     L:329  DEBUG   [2024-03-01 12:40:10,145] Requesting all project files. Wait, please...
+GPReplicator.py     L:239  DEBUG   [2024-03-01 12:40:10,146] Request parameters:
+GPReplicator.py     L:240  DEBUG   [2024-03-01 12:40:10,148]     - REST API URL: https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/trees/master?recursive=1
+GPReplicator.py     L:241  DEBUG   [2024-03-01 12:40:10,149]     - request type: GET
+GPReplicator.py     L:242  DEBUG   [2024-03-01 12:40:10,149]     - headers:
+{'Content-Type': 'application/x-www-form-urlencoded', 'charset': 'UTF-8', 'accept': 'application/json', 'x-app-name': '3LogicGroup.GPReplicator'}
+GPReplicator.py     L:243  DEBUG   [2024-03-01 12:40:10,150]     - raw request body:
+None
+GPReplicator.py     L:259  DEBUG   [2024-03-01 12:40:10,852] Response:
+GPReplicator.py     L:260  DEBUG   [2024-03-01 12:40:10,853]     - status code: 200
+GPReplicator.py     L:261  DEBUG   [2024-03-01 12:40:10,853]     - reason: OK
+GPReplicator.py     L:262  DEBUG   [2024-03-01 12:40:10,853]     - body length: 11203
+GPReplicator.py     L:263  DEBUG   [2024-03-01 12:40:10,854]     - headers:
+{'server': 'nginx', 'date': 'Fri, 01 Mar 2024 09:40:10 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'vary': 'Accept-Encoding, Origin', 'etag': 'W/"ad6cc2e0289128490a65a084ef62efae"', 'cache-control': 'max-age=0, private, must-revalidate', 'x-ratelimit-limit': '60', 'x-ratelimit-remaining': '51', 'x-request-id': 'e6cfe986d5560c844a58583936b03b0e', 'x-runtime': '0.089139', 'x-frame-options': 'SAMEORIGIN', 'content-security-policy': 'upgrade-insecure-requests;connect-src *', 'content-encoding': 'gzip', 'connection': 'close'}
+GPReplicator.py     L:270  DEBUG   [2024-03-01 12:40:10,854]     - X-RateLimit-Limit for unauthorized user and current ip-address: 60
+GPReplicator.py     L:271  DEBUG   [2024-03-01 12:40:10,854]     - X-RateLimit-Remaining for unauthorized user and current ip-address: 51
+GPReplicator.py     L:213  DEBUG   [2024-03-01 12:40:10,854] JSON-data of raw response body:
+{
+    "sha": "master",
+    "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/trees/master",
+    "tree": [
+        {
+            "path": ".travis.yml",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "602c2821e559d436bfdcb8fcc1b8af2103e70cd0",
+            "size": 1566,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/602c2821e559d436bfdcb8fcc1b8af2103e70cd0"
+        },
+        {
+            "path": "CHANGELOG.md",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "cefca746c12d6cccdabea10c6a8667a21d29d1bb",
+            "size": 9801,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/cefca746c12d6cccdabea10c6a8667a21d29d1bb"
+        },
+        {
+            "path": "CHANGELOG_RU.md",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "18e8da8e91710e99ae568e39331d4d442e61f3bd",
+            "size": 16412,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/18e8da8e91710e99ae568e39331d4d442e61f3bd"
+        },
+        {
+            "path": "LICENSE",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "2bb9ad240fa04c8cf706a4901c4807878e90c2dc",
+            "size": 10172,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/2bb9ad240fa04c8cf706a4901c4807878e90c2dc"
+        },
+        {
+            "path": "PDocBuilder.py",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "d6522ed875a8adaf34c00c54dfbb9455c21697f5",
+            "size": 1029,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/d6522ed875a8adaf34c00c54dfbb9455c21697f5"
+        },
+        {
+            "path": "README.md",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "101fa7b534cac01e3935154e182e0c85a2303f36",
+            "size": 33665,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/101fa7b534cac01e3935154e182e0c85a2303f36"
+        },
+        {
+            "path": "README_RU.md",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "d989d35552b5d5feaa93939a79c90cd85f37af7c",
+            "size": 49317,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/d989d35552b5d5feaa93939a79c90cd85f37af7c"
+        },
+        {
+            "path": "_config.yml",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "277f1f2c510d1d7ef67d0278b7b2ca730f64c1e3",
+            "size": 27,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/277f1f2c510d1d7ef67d0278b7b2ca730f64c1e3"
+        },
+        {
+            "path": "docs",
+            "mode": "40000",
+            "type": "tree",
+            "sha": "ff0485f1c9f54d47fdcf13c98075e49e2bd20f3b",
+            "size": 0,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/trees/ff0485f1c9f54d47fdcf13c98075e49e2bd20f3b"
+        },
+        {
+            "path": "docs/index.html",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "9ff147a00071b7cf0d38c080a58eda946ad51979",
+            "size": 145,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/9ff147a00071b7cf0d38c080a58eda946ad51979"
+        },
+        {
+            "path": "docs/pricegenerator.html",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "d1318a3e2230dfdd879b833feb92679e8d22f50c",
+            "size": 34623,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/d1318a3e2230dfdd879b833feb92679e8d22f50c"
+        },
+        {
+            "path": "docs/pricegenerator",
+            "mode": "40000",
+            "type": "tree",
+            "sha": "b044b6aecac68dd0f5daee923923097dfb87c7fa",
+            "size": 0,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/trees/b044b6aecac68dd0f5daee923923097dfb87c7fa"
+        },
+        {
+            "path": "docs/pricegenerator/PriceGenerator.html",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "ca05ecdf6e43d4b2ef4b122df05668dd521a0a53",
+            "size": 83193,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/ca05ecdf6e43d4b2ef4b122df05668dd521a0a53"
+        },
+        {
+            "path": "docs/pricegenerator/UniLogger.html",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "4df29c5d2af45b47a187a2e06ed2b376acb28820",
+            "size": 45600,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/4df29c5d2af45b47a187a2e06ed2b376acb28820"
+        },
+        {
+            "path": "docs/search.js",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "aa82441bfd6840a1376a996f767b2c4d7ff995de",
+            "size": 60779,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/aa82441bfd6840a1376a996f767b2c4d7ff995de"
+        },
+        {
+            "path": "media",
+            "mode": "40000",
+            "type": "tree",
+            "sha": "81c58997a8ceb7d49d447f7036b146b96d05efbe",
+            "size": 0,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/trees/81c58997a8ceb7d49d447f7036b146b96d05efbe"
+        },
+        {
+            "path": "media/index.html",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "a723b48592ffa06ad1e28b54a90b7338cb5a06fe",
+            "size": 38496,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/a723b48592ffa06ad1e28b54a90b7338cb5a06fe"
+        },
+        {
+            "path": "media/index.html.md",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "3b8235e55154d7060c18ceb6b4c8c53779519935",
+            "size": 1334,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/3b8235e55154d7060c18ceb6b4c8c53779519935"
+        },
+        {
+            "path": "media/index.html.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "41d281aa9f1f7299da2968e51aabfa7b7244c61b",
+            "size": 141511,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/41d281aa9f1f7299da2968e51aabfa7b7244c61b"
+        },
+        {
+            "path": "media/index_custom.html",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "c081f26b6dfdb8314ec175cf9a7c3dd226e8ac8d",
+            "size": 45479,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/c081f26b6dfdb8314ec175cf9a7c3dd226e8ac8d"
+        },
+        {
+            "path": "media/index_custom.html.md",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "29ff2128758a8f604f56a56b43d2f8ab0cf3ca8e",
+            "size": 1353,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/29ff2128758a8f604f56a56b43d2f8ab0cf3ca8e"
+        },
+        {
+            "path": "media/index_custom.html.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "12bf32f636d47cfcc585820440c056efcd0bb7f1",
+            "size": 217215,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/12bf32f636d47cfcc585820440c056efcd0bb7f1"
+        },
+        {
+            "path": "media/index_google.html",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "ce9d3198ed6f0c5dcd9ffb315fae005033256ce8",
+            "size": 11982,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/ce9d3198ed6f0c5dcd9ffb315fae005033256ce8"
+        },
+        {
+            "path": "media/index_google.html.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "fbdd1e7c293d330ec1588020136773f22ec581a5",
+            "size": 72875,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/fbdd1e7c293d330ec1588020136773f22ec581a5"
+        },
+        {
+            "path": "media/index_with_trends.html.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "aa7a7afa2630a657af605ea910cb157987bbfdde",
+            "size": 106476,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/aa7a7afa2630a657af605ea910cb157987bbfdde"
+        },
+        {
+            "path": "media/logo-pricegenerator-128x128px.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "1aabd973519a71e654b626aecc1140dd2a666880",
+            "size": 5827,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/1aabd973519a71e654b626aecc1140dd2a666880"
+        },
+        {
+            "path": "media/logo-pricegenerator-256x256px.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "7ed434472791bf360c515dc438ad8ebfe163da8e",
+            "size": 5839,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/7ed434472791bf360c515dc438ad8ebfe163da8e"
+        },
+        {
+            "path": "media/logo-pricegenerator-32x32px.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "37eb84bdf4f45a7ec50d82d7d7acc9281b043706",
+            "size": 1411,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/37eb84bdf4f45a7ec50d82d7d7acc9281b043706"
+        },
+        {
+            "path": "media/logo-pricegenerator-420x610px.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "632acbad27b72d9610f95acf6ac52b1110bebfc5",
+            "size": 22478,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/632acbad27b72d9610f95acf6ac52b1110bebfc5"
+        },
+        {
+            "path": "media/logo-pricegenerator-64x64px.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "4b5afbd17eb7b11b108e521cef560b635f4b71d5",
+            "size": 2849,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/4b5afbd17eb7b11b108e521cef560b635f4b71d5"
+        },
+        {
+            "path": "media/long-series-example-with-realistic-volumes.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "77cdff4fb5e98175ce3b4a91f286d2c1490d0f28",
+            "size": 273460,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/77cdff4fb5e98175ce3b4a91f286d2c1490d0f28"
+        },
+        {
+            "path": "media/marked_dark.png",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "685b9fec5a0b26c1804184065d53a6265993f1c1",
+            "size": 179685,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/685b9fec5a0b26c1804184065d53a6265993f1c1"
+        },
+        {
+            "path": "media/test.csv",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "0c3a89f667e38a52a4c92400d8820a85b48f98f5",
+            "size": 5521,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/0c3a89f667e38a52a4c92400d8820a85b48f98f5"
+        },
+        {
+            "path": "pricegenerator",
+            "mode": "40000",
+            "type": "tree",
+            "sha": "58ffeb22e7768dab6751be07449dd564d935001a",
+            "size": 0,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/trees/58ffeb22e7768dab6751be07449dd564d935001a"
+        },
+        {
+            "path": "pricegenerator/PriceGenerator.py",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "32ba857e3674da07b61dd03364922adc530ff527",
+            "size": 84017,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/32ba857e3674da07b61dd03364922adc530ff527"
+        },
+        {
+            "path": "pricegenerator/UniLogger.py",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "2730c274b2d33bdb620f5c53323b38526b33e021",
+            "size": 3820,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/2730c274b2d33bdb620f5c53323b38526b33e021"
+        },
+        {
+            "path": "pricegenerator/__init__.py",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+            "size": 0,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+        },
+        {
+            "path": "pricegenerator/__main__.py",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "221d6d53af73a3bb8e42942721384f717435cba4",
+            "size": 86,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/221d6d53af73a3bb8e42942721384f717435cba4"
+        },
+        {
+            "path": "pricegenerator/google_template_example.j2",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "596e53adafb879f3b2748c79d9d35152d4c416e7",
+            "size": 4565,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/596e53adafb879f3b2748c79d9d35152d4c416e7"
+        },
+        {
+            "path": "requirements.txt",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "057e6382ef1052ac56e5e9184fdd4ef66bef2593",
+            "size": 761,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/057e6382ef1052ac56e5e9184fdd4ef66bef2593"
+        },
+        {
+            "path": "setup.cfg",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "224a77957f5db48dfa25c8bb4a35f535202da203",
+            "size": 39,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/224a77957f5db48dfa25c8bb4a35f535202da203"
+        },
+        {
+            "path": "setup.py",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "ec6b5d9e59e24101614870ea0b65dee2a5ed8ca0",
+            "size": 4245,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/ec6b5d9e59e24101614870ea0b65dee2a5ed8ca0"
+        },
+        {
+            "path": "tests",
+            "mode": "40000",
+            "type": "tree",
+            "sha": "f92b611fa5405c79bf2be975ae3a9c61508a1dd7",
+            "size": 0,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/trees/f92b611fa5405c79bf2be975ae3a9c61508a1dd7"
+        },
+        {
+            "path": "tests/AFLT_day.csv",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "b1f322fa765184569156aedbf292aa6e2e9e8449",
+            "size": 134098,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/b1f322fa765184569156aedbf292aa6e2e9e8449"
+        },
+        {
+            "path": "tests/test_PriceGenerator.py",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "34ee4af5b1c6f55dc216faba7c38114d0bc54311",
+            "size": 19415,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/34ee4af5b1c6f55dc216faba7c38114d0bc54311"
+        },
+        {
+            "path": "tests/test_template.j2",
+            "mode": "100644",
+            "type": "blob",
+            "sha": "15e6fd74123d6c3f2ebd54d5aca07b2e77d6e591",
+            "size": 3982,
+            "url": "https://gitee.ru/api/v5/repos/tim55667757/PriceGenerator/git/blobs/15e6fd74123d6c3f2ebd54d5aca07b2e77d6e591"
+        }
+    ],
+    "truncated": false
+}
+GPReplicator.py     L:339  DEBUG   [2024-03-01 12:40:10,859] Project files data successfully received. Records: [46]
+GPReplicator.py     L:349  INFO    [2024-03-01 12:40:10,859] List of all project files [46]:
+. PriceGenerator repository
+|-> .travis.yml
+|-> CHANGELOG.md
+|-> CHANGELOG_RU.md
+|-> LICENSE
+|-> PDocBuilder.py
+|-> README.md
+|-> README_RU.md
+|-> _config.yml
+|-> docs/
+|-> docs/index.html
+|-> docs/pricegenerator.html
+|-> docs/pricegenerator/
+|-> docs/pricegenerator/PriceGenerator.html
+|-> docs/pricegenerator/UniLogger.html
+|-> docs/search.js
+|-> media/
+|-> media/index.html
+|-> media/index.html.md
+|-> media/index.html.png
+|-> media/index_custom.html
+|-> media/index_custom.html.md
+|-> media/index_custom.html.png
+|-> media/index_google.html
+|-> media/index_google.html.png
+|-> media/index_with_trends.html.png
+|-> media/logo-pricegenerator-128x128px.png
+|-> media/logo-pricegenerator-256x256px.png
+|-> media/logo-pricegenerator-32x32px.png
+|-> media/logo-pricegenerator-420x610px.png
+|-> media/logo-pricegenerator-64x64px.png
+|-> media/long-series-example-with-realistic-volumes.png
+|-> media/marked_dark.png
+|-> media/test.csv
+|-> pricegenerator/
+|-> pricegenerator/PriceGenerator.py
+|-> pricegenerator/UniLogger.py
+|-> pricegenerator/__init__.py
+|-> pricegenerator/__main__.py
+|-> pricegenerator/google_template_example.j2
+|-> requirements.txt
+|-> setup.cfg
+|-> setup.py
+|-> tests/
+|-> tests/AFLT_day.csv
+|-> tests/test_PriceGenerator.py
+|-> tests/test_template.j2
+GPReplicator.py     L:710  DEBUG   [2024-03-01 12:40:10,859] All GPReplicator operations are finished success (summary code is 0).
+GPReplicator.py     L:715  DEBUG   [2024-03-01 12:40:10,860] GPReplicator work duration: 0:00:00.732472
+GPReplicator.py     L:716  DEBUG   [2024-03-01 12:40:10,860] GPReplicator work finished: 2024-03-01 12:40:10
